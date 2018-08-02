@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 export FLASK_APP=microblog.py
-flask run 
+export FLASK_DEBUG=1
+flask run
 
