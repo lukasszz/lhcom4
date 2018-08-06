@@ -10,7 +10,7 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 def index():
     user = {'username': 'Miguel'}
-    return render_template('index.html', title='Home', user=user)
+    return render_template('index.html', title='Home', user=user, posts=Post.get_news())
 
 
 @app.route('/login', methods=['GET', 'POST'])
