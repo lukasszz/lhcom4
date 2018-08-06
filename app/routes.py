@@ -9,8 +9,8 @@ from werkzeug.urls import url_parse
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Miguel'}
-    return render_template('index.html', title='Home', user=user, posts=Post.get_news())
+
+    return render_template('index.html', title='Home', user=current_user, posts=Post.get_news())
 
 
 @app.route('/login', methods=['GET', 'POST'])
