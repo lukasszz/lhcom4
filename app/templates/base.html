@@ -16,15 +16,59 @@
 
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark"
+     style="border-bottom: 1px solid #151623;">
+
+    <a href="{{ url_for('index') }}" class="btn btn-shadow btn-outline-success ">
+        <span class="fa fa-home"></span>
+    </a>
+
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" style="color: #a0a0a0" href="#!">Posts#}
+{#                    <span class="sr-only">(current)</span>#}
+{#                </a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#!">Link</a>#}
+{#            </li>#}
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        </form>
+        <ul class="navbar-nav mt-2 mt-md-0 ">
+            {% if current_user.is_anonymous %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">.</a>
+                </li>
+            {% else %}
+
+
+                <li class="nav-item ">
+                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('post_ed') }}" class="btn  ">
+                        <span class="fa fa-lg fa-pencil"></span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('logout') }}" class="btn  ">
+                        <span class="fa fa-lg fa-sign-out"></span>
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+
+    </div>
+</nav>
+
 <div>
-    <a href="{{ url_for('index') }}">Home</a>
-    {% if current_user.is_anonymous %}
-        <a href="{{ url_for('login') }}">Login</a>
-    {% else %}
-        [{{ current_user.username }}
-        <a href="{{ url_for('post_ed') }}">+Post</a>]
-        <a href="{{ url_for('logout') }}">Logout</a>]
-    {% endif %}
+
+
 </div>
 <div>
     {% with messages = get_flashed_messages() %}

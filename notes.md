@@ -1,5 +1,6 @@
 ## TODO
-[ ] Nav bar for menu #base.html
+[x] Nav bar for menu #base.html
+[ ] Login template
 [ ] Index page withotut body #index.html
 [ ] Flashes special box #base.html
 [ ] Post list page
