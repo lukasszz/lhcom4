@@ -11,6 +11,7 @@
 
 [ ] error pages https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
 [ ] sending errors by e-mail
+[ ] should I download all the css files localy?
 
 ## JRNL
 
