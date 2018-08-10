@@ -5,22 +5,19 @@
         <h1>Add new post</h1>
         <div class="col-xl-8 card">
             <div class="card-body">
-                <h6 class="card-title">Cool stuff to rember</h6>
                 <form action="" method="post">
-                    {{ form.hidden_tag() }}
-                    <div class="ht-tm-element ht-tm-element-inner">
-                        {{ form.post(cols=32, rows=4, class="form-control") }}<br>
-                    </div>
-                    <p>
-                        {{ form.post.label }}<br>
+                    <div class="form-group">
+                        {{ form.hidden_tag() }}
+                        <label for="{{ form.post.id }}">{{ form.post.label }}</label>
+                        {{ form.post(cols=32, rows=4, class="form-control") }}
 
                         {% for error in form.post.errors %}
                             <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
-                    </p>
-                    <p>{{ form.submit(class='btn btn-success') }}</p>
+                    </div>
+                    {{ form.submit(class='form-control btn btn-success') }}
                 </form>
+
             </div>
         </div>
-    </div>
 {% endblock %}

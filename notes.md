@@ -1,10 +1,11 @@
 ## TODO
 [x] Nav bar for menu #base.html
 [x] Login template
-[ ] post_ed template adjust for css
-[ ] Index page withotut body #index.html
+[x] post_ed template adjust for css
+[x] Base page withotut body #index.html
+[ ] Index page content
 [ ] Flashes special box #base.html
-[ ] Post list page
+[ ] Post list page with pagination
 [ ] Next chapter
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
