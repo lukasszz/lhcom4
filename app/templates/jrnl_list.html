@@ -3,9 +3,21 @@
 {% block content %}
     <div class="container py-5">
         <h2>Jrnl</h2>
-        {% for jrnl in jrnls %}
-            <div><p>{{ jrnl.body }} {{ jrnl.timestamp }}</p></div>
-        {% endfor %}
+        <div class="row">
+                {% for jrnl in jrnls %}
+
+                    <div class="card m-2 text-center border-success", style="max-width: 30%">
+                        <div class="card-body">
+                            <blockquote class="card-blockquote">
+                                <p>{{ jrnl.body }}</p>
+                                <footer class="font-italic">{{ jrnl.timestamp }}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                {% endfor %}
+        </div>
     </div>
 
     {% if prev_url %}

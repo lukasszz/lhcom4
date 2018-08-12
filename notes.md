@@ -8,11 +8,12 @@
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
-
+[ ] Jrnl hashtags
 [ ] Deploy for production
 
 [ ] Git-hub
 
+[ ] Jrnl Random border colors: (https://getbootstrap.com/docs/4.0/utilities/borders/#border-color) 
 [ ] Flashes special box #base.html
 [ ] error pages https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
 [ ] sending errors by e-mail

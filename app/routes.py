@@ -52,7 +52,7 @@ def jrnl_ed():
 @app.route('/jrnl_list')
 def jrnl_list():
     page = request.args.get('page', 1, type=int)
-    jrnls = Jrnl.get_news().paginate(page, 10, False)
+    jrnls = Jrnl.get_news().paginate(page, 9, False)
 
     next_url = url_for('jrnl_list', page=jrnls.next_num) \
         if jrnls.has_next else None
