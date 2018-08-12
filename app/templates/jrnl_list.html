@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container py-5">
+        <h2>Jrnl</h2>
+        {% for jrnl in jrnls %}
+            <div><p>{{ jrnl.body }} {{ jrnl.timestamp }}</p></div>
+        {% endfor %}
+    </div>
+{% endblock %}

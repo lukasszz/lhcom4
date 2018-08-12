@@ -1,8 +1,9 @@
 ## TODO
 
-[x] Index page content
 
-[ ] Jrnl list page with pagination
+[x] Jrnl list page
+[ ] Jrnl list pagination
+[ ] Jrnl list and nav bar facelift
 [ ] Next chapter
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
@@ -18,6 +19,7 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] Index page content
 [x] Nav bar for menu #base.html
 [x] Login template
 [x] post_ed template adjust for css

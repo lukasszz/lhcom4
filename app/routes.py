@@ -9,8 +9,7 @@ from werkzeug.urls import url_parse
 @app.route('/')
 @app.route('/index')
 def index():
-
-    return render_template('index.html', title='Home', user=current_user, jrnls=Jrnl.get_news())
+    return render_template('index.html', title='Home', user=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -48,3 +47,8 @@ def jrnl_ed():
         flash('Added new Jrnl entry!')
         return redirect(url_for('index'))
     return render_template('jrnl_ed.html', form=form)
+
+
+@app.route('/jrnl_list')
+def jrnl_list():
+    return render_template('jrnl_list.html', jrnls=Jrnl.get_news())
