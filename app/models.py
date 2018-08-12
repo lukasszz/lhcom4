@@ -37,4 +37,4 @@ class Jrnl(db.Model):
 
     @staticmethod
     def get_news():
-        return Jrnl.query.order_by(Jrnl.id.desc()).limit(5)
+        return Jrnl.query.order_by(Jrnl.id.desc())

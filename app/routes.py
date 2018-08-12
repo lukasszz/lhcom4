@@ -51,4 +51,12 @@ def jrnl_ed():
 
 @app.route('/jrnl_list')
 def jrnl_list():
-    return render_template('jrnl_list.html', jrnls=Jrnl.get_news())
+    page = request.args.get('page', 1, type=int)
+    jrnls = Jrnl.get_news().paginate(page, 10, False)
+
+    next_url = url_for('jrnl_list', page=jrnls.next_num) \
+        if jrnls.has_next else None
+    prev_url = url_for('jrnl_list', page=jrnls.prev_num) \
+        if jrnls.has_prev else None
+
+    return render_template('jrnl_list.html', jrnls=jrnls.items, next_url=next_url, prev_url=prev_url)

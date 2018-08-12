@@ -2,7 +2,7 @@
 
 
 [x] Jrnl list page
-[ ] Jrnl list pagination
+[x] Jrnl list pagination
 [ ] Jrnl list and nav bar facelift
 [ ] Next chapter
 
