@@ -7,7 +7,10 @@
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
+
 [ ] Deploy for production
+
+[ ] Git-hub
 
 [ ] Flashes special box #base.html
 [ ] error pages https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling

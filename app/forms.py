@@ -10,7 +10,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 
-class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[
+class JrnlForm(FlaskForm):
+    jrnl = TextAreaField('Share your experience in a few words', validators=[
         DataRequired(), Length(min=1)])
     submit = SubmitField('Submit')

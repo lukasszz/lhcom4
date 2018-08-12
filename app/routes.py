@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
-from app.forms import LoginForm, PostForm
-from app.models import User, Post
+from app.forms import LoginForm, JrnlForm
+from app.models import User, Jrnl
 from werkzeug.urls import url_parse
 
 
@@ -10,7 +10,7 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 def index():
 
-    return render_template('index.html', title='Home', user=current_user, posts=Post.get_news())
+    return render_template('index.html', title='Home', user=current_user, jrnls=Jrnl.get_news())
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -37,14 +37,14 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/post_ed', methods=['POST', 'GET'])
+@app.route('/jrnl_ed', methods=['POST', 'GET'])
 @login_required
-def post_ed():
-    form = PostForm()
+def jrnl_ed():
+    form = JrnlForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
-        db.session.add(post)
+        jrnl = Jrnl(body=form.jrnl.data, author=current_user)
+        db.session.add(jrnl)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('Added new Jrnl entry!')
         return redirect(url_for('index'))
-    return render_template('post_ed.html', form=form)
+    return render_template('jrnl_ed.html', form=form)
