@@ -1,3 +1,5 @@
+from math import ceil
+
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
@@ -53,10 +55,6 @@ def jrnl_ed():
 def jrnl_list():
     page = request.args.get('page', 1, type=int)
     jrnls = Jrnl.get_news().paginate(page, 9, False)
+    total_pages = ceil(jrnls.total / jrnls.per_page)
 
-    next_url = url_for('jrnl_list', page=jrnls.next_num) \
-        if jrnls.has_next else None
-    prev_url = url_for('jrnl_list', page=jrnls.prev_num) \
-        if jrnls.has_prev else None
-
-    return render_template('jrnl_list.html', jrnls=jrnls.items, next_url=next_url, prev_url=prev_url)
+    return render_template('jrnl_list.html', jrnls=jrnls, total_pages=total_pages)

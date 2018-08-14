@@ -2,28 +2,60 @@
 
 {% block content %}
     <div class="container py-5">
-        <h2>Jrnl</h2>
-        <div class="row">
-                {% for jrnl in jrnls %}
+        <h2>Journal of my recent activities</h2>
+        <div class="row mt-5">
+            {% for jrnl in jrnls.items %}
 
-                    <div class="card m-2 text-center border-success", style="max-width: 30%">
-                        <div class="card-body">
-                            <blockquote class="card-blockquote">
-                                <p>{{ jrnl.body }}</p>
-                                <footer class="font-italic">{{ jrnl.timestamp }}
-                                </footer>
-                            </blockquote>
-                        </div>
+                <div class="card m-2 text-center border-success" , style="max-width: 30%">
+                    <div class="card-body">
+                        <blockquote class="card-blockquote">
+                            <p>{{ jrnl.body }}</p>
+                            <footer class="font-italic">{{ jrnl.timestamp }}
+                            </footer>
+                        </blockquote>
                     </div>
+                </div>
 
-                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="row text-center ">
+            <div class="col-sm">
+
+                <nav aria-label="...">
+                    <ul class="pagination mb-4 p-5 mx-auto">
+
+
+                        {% if jrnls.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('jrnl_list', page=jrnls.prev_num) }}">Previous</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">Previous</span>
+                            </li>
+                        {% endif %}
+
+
+                        <li class="page-item active">
+                            <span class="page-link">  {{ jrnls.page }} of {{ total_pages }} <span class="sr-only">(current)</span></span>
+                        </li>
+
+
+                        {% if jrnls.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('jrnl_list', page=jrnls.next_num) }}">Next</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">Next</span>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 
-    {% if prev_url %}
-        <a href="{{ prev_url }}">Prev</a>
-    {% endif %}
-    {% if next_url %}
-        <a href="{{ next_url }}">Next</a>
-    {% endif %}
 {% endblock %}
