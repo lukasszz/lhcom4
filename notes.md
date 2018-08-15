@@ -1,8 +1,6 @@
 ## TODO
 
-[x] Jrnl list pagination
 
-[ ] Jrnl nav bar facelift
 [ ] Next chapter
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
@@ -11,6 +9,7 @@
 [ ] Deploy for production
 
 [ ] Git-hub
+[ ] Navbar - select active link
 [ ] Jrnl different colors for each card (random or by category)
 [ ] Jrnl list move navbar to the center
 [ ] Search nav i disappearing in smaller view
@@ -21,6 +20,8 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] Jrnl list pagination
+[x] Jrnl nav bar facelift
 [x] Jrnl list page
 [x] Index page content
 [x] Nav bar for menu #base.html
