@@ -23,7 +23,8 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-outline-brand navbar-brand" style="font-style: oblique;">
+    <a href="{{ url_for('index') }}" class="btn btn-outline-light btn-outline-brand navbar-brand"
+       style="font-style: oblique;">
         ŁH
     </a>
 
@@ -36,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="{{ url_for('jrnl_list') }}">About
+                <a class="nav-link" href="{{ url_for('jrnl_list') }}">About
                 </a>
             </li>
             {#            <li class="nav-item">#}
@@ -107,6 +108,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+{{ moment.include_moment() }}
 
 </body>
 </html>

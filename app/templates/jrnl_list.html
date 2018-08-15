@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <blockquote class="card-blockquote">
                             <p>{{ jrnl.body }}</p>
-                            <footer class="font-italic">{{ jrnl.timestamp }}
+                            <footer class="font-italic">{{ moment(jrnl.timestamp).fromNow() }}
                             </footer>
                         </blockquote>
                     </div>
