@@ -3,10 +3,10 @@ from math import ceil
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_required
 
-from app import app, db
+from app import db
+from app.jrnl import bp
 from app.jrnl.forms import JrnlForm
 from app.models import Jrnl
-from app.jrnl import bp
 
 
 @bp.route('/jrnl_ed', methods=['POST', 'GET'])
