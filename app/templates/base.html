@@ -51,7 +51,7 @@
         <ul class="navbar-nav mt-2 mt-md-0 ">
             {% if current_user.is_anonymous %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">.</a>
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">.</a>
                 </li>
             {% else %}
 
@@ -64,7 +64,7 @@
 
 
                 <li class="nav-item ">
-                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('logout') }}" class="btn  ">
+                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('auth.logout') }}" class="btn  ">
                         <span class="fa fa-lg fa-sign-out"></span>
                     </a>
                 </li>

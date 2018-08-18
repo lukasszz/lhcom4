@@ -1,11 +1,11 @@
 ## TODO
 
-
+[ ] blueprint for jrnl
 [ ] Next chapter
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
-[ ] Jrnl hashtags
+[ ] Jrnl #hashtag +project 
 [ ] Deploy for production
 
 [ ] Git-hub
@@ -20,6 +20,7 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] blueprint for auth
 [x] Jrnl list pagination
 [x] Jrnl nav bar facelift
 [x] Jrnl list page
