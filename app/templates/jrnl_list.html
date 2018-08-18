@@ -28,7 +28,7 @@
 
                         {% if jrnls.has_prev %}
                             <li class="page-item">
-                                <a class="page-link" href="{{ url_for('jrnl_list', page=jrnls.prev_num) }}">Previous</a>
+                                <a class="page-link" href="{{ url_for('jrnl.jrnl_list', page=jrnls.prev_num) }}">Previous</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
@@ -44,7 +44,7 @@
 
                         {% if jrnls.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="{{ url_for('jrnl_list', page=jrnls.next_num) }}">Next</a>
+                                <a class="page-link" href="{{ url_for('jrnl.jrnl_list', page=jrnls.next_num) }}">Next</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
