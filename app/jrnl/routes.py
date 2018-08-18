@@ -18,7 +18,7 @@ def jrnl_ed():
         db.session.add(jrnl)
         db.session.commit()
         flash('Added new Jrnl entry!')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     return render_template('jrnl_ed.html', form=form)
 
 
