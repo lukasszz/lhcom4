@@ -1,7 +1,7 @@
 ## TODO
 
-[ ] blueprint for jrnl
-[ ] Next chapter
+[x] Enable elasticsearch
+[ ] Integrating Search for jrnl
 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
@@ -10,6 +10,7 @@
 
 [ ] Git-hub
 [ ] Navbar - select active link
+[ ] Move configuration to .env and add Config to the repo (instead of creating config sample)
 [ ] Jrnl different colors for each card (random or by category)
 [ ] Jrnl list move navbar to the center
 [ ] Search nav i disappearing in smaller view
@@ -20,6 +21,7 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] blueprint for jrnl
 [x] blueprint for auth
 [x] Jrnl list pagination
 [x] Jrnl nav bar facelift
@@ -41,6 +43,10 @@
 
 ## JRNL
 
+### 2018-08-19
+Instalation of elasticsearch. The offcial dnf package for Fedora is broken. Installed it through:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+
 ### 2018-08-08
 Facelift. It was enough to download hacker theme [2] into `app/static` dir. Then merge its `index.html`
 with `base.html`. Adding styles to my templates requires manually point out the css class, eg.:
@@ -51,3 +57,4 @@ with `base.html`. Adding styles to my templates requires manually point out the 
 ## REFS
 [1] https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
 [2] _https://hackerthemes.com/bootstrap-themes/neon-glow/#!_
+[3] https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
