@@ -2,7 +2,7 @@
 
 [x] Enable elasticsearch
 [ ] Integrating Search for jrnl
-
+[ ] ResearchGate 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
 [ ] Jrnl #hashtag +project 
@@ -39,9 +39,20 @@
 - Shares - links to things I read/saw on the Internet (FB Like) 
 - About - CV (Linked In)
 - Workspace - links to projcetcs on BitBucket, GitHub, (resources for PhD)
+- Books
 
 
 ## JRNL
+
+### 2018-09-11
+Runing the app in console:
+``` 
+import app
+a = app.create_app()
+a.app_context().push()
+
+import app.models as m
+```
 
 ### 2018-08-19
 Instalation of elasticsearch. The offcial dnf package for Fedora is broken. Installed it through:
@@ -56,5 +67,5 @@ with `base.html`. Adding styles to my templates requires manually point out the 
 
 ## REFS
 [1] https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
-[2] _https://hackerthemes.com/bootstrap-themes/neon-glow/#!_
+[2] https://hackerthemes.com/bootstrap-themes/neon-glow
 [3] https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
