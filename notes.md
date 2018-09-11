@@ -1,7 +1,6 @@
 ## TODO
 
-[x] Enable elasticsearch
-[ ] Integrating Search for jrnl
+[x] Integrating Search for jrnl
 [ ] ResearchGate 
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
@@ -21,6 +20,7 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] Enable elasticsearch
 [x] blueprint for jrnl
 [x] blueprint for auth
 [x] Jrnl list pagination

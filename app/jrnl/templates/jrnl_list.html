@@ -2,17 +2,15 @@
 
 {% block content %}
     <div class="container py-5">
-        <h2>Journal of my recent activities</h2>
+        <h1>Journal of my recent activities</h1>
         <div class="row mt-5">
             {% for jrnl in jrnls.items %}
 
-                <div class="card m-2 text-center border-success" , style="max-width: 30%">
+                <div class="card m-2 border-success" , style="max-width: 30%">
                     <div class="card-body">
-                        <blockquote class="card-blockquote">
                             <p>{{ jrnl.body }}</p>
-                            <footer class="font-italic">{{ moment(jrnl.timestamp).fromNow() }}
+                            <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
                             </footer>
-                        </blockquote>
                     </div>
                 </div>
 
