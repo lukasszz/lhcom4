@@ -1,11 +1,12 @@
 ## TODO
 
-[x] Integrating Search for jrnl
-[ ] ResearchGate 
+[ ] Deploy for production
+
+[ ] Markdown support
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
 [ ] Jrnl #hashtag +project 
-[ ] Deploy for production
+
 
 [ ] Git-hub
 [ ] Navbar - select active link
@@ -20,6 +21,8 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] Integrating Search for jrnl
+[x] ResearchGate 
 [x] Enable elasticsearch
 [x] blueprint for jrnl
 [x] blueprint for auth
