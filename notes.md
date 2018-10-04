@@ -47,6 +47,22 @@
 
 ## JRNL
 
+### 2018-10-04
+Deployed on linux.
+$ systemctl start lhcom4.uwsgi.service
+$ systemctl start nginx
+
+Configuration:
+/etc/nginx/
+    nginx.conf
+    conf.d
+/etc/systemd
+lhcom4/uwsgi.ini
+
+Logs:
+/var/log/uwsgi
+journalctl -ex
+
 ### 2018-09-11
 Runing the app in console:
 ``` 
