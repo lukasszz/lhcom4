@@ -1,14 +1,18 @@
 ## TODO
+[x] Add to github
 
-[ ] Deploy for production
-
+[ ] Deploy for production 
+    [ ] Setup server
+    [ ] Disalbe debug mode
+    [ ] Domain
+    
+[ ] https
 [ ] Markdown support
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
-[ ] Jrnl #hashtag +project 
+[ ] Jrnl tags: #hashtag +project 
 
-
-[ ] Git-hub
+[ ] Cookies (?)
 [ ] Navbar - select active link
 [ ] Move configuration to .env and add Config to the repo (instead of creating config sample)
 [ ] Jrnl different colors for each card (random or by category)
@@ -46,6 +50,23 @@
 
 
 ## JRNL
+
+### 2018-10-02
+Disable SELinux.
+certs where moved from /home/lukasz/certs to /etc/nginx (selinux problem)
+
+(venv) [lukasz@serwer-1 lhcom4]$ sudo mkdir /run/uwsgi
+(venv) [lukasz@serwer-1 lhcom4]$ sudo chown lukasz:lukasz /run/uwsgi
+
+
+### 2018-09-13
+Project add to github for easier deployment.
+Just created empty repo on github and pushed my local repo with:
+```
+git remote add origin https://github.com/(...).git
+git push -u origin master
+
+```
 
 ### 2018-10-04
 Deployed on linux.
