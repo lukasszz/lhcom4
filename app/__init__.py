@@ -56,6 +56,9 @@ def create_app(config_class=Config):
     app.pagedown = PageDown()
     app.pagedown.init_app(app)
 
+    from flaskext.markdown import Markdown
+    Markdown(app)
+
     return app
 
 from app import models
