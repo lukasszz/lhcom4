@@ -1,5 +1,5 @@
 ## TODO
-[x] Add to github
+
 
 [ ] Deploy for production 
     [ ] Setup server
@@ -11,6 +11,7 @@
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
 [ ] Jrnl tags: #hashtag +project 
+[ ] favicon
 
 [ ] Cookies (?)
 [ ] Navbar - select active link
@@ -25,6 +26,7 @@
 [ ] should I download all the css files localy?
 
 ## DONE
+[x] Add to github
 [x] Integrating Search for jrnl
 [x] ResearchGate 
 [x] Enable elasticsearch
