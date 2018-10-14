@@ -8,7 +8,7 @@
 
                 <div class="card m-2 border-success" , style="max-width: 30%">
                     <div class="card-body">
-                            <p>{{ jrnl.body }}</p>
+                            <p>{{ jrnl.body | markdown }}</p>
                             <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
                             </footer>
                     </div>
