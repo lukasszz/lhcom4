@@ -8,9 +8,13 @@
 
                 <div class="card m-2 border-success" , style="max-width: 30%">
                     <div class="card-body">
-                            <p>{{ jrnl.body | markdown }}</p>
-                            <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
-                            </footer>
+                        <p>{{ jrnl.body | markdown }}</p>
+                        <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
+                        </footer>
+                        {% if not current_user.is_anonymous %}
+                            {{ jrnl.id }}
+                            <a href="{{ url_for('jrnl.jrnl_ed', id=jrnl.id) }}">.</a>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -42,7 +46,8 @@
 
                         {% if jrnls.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="{{ url_for('jrnl.jrnl_list', page=jrnls.next_num) }}">Next</a>
+                                <a class="page-link"
+                                   href="{{ url_for('jrnl.jrnl_list', page=jrnls.next_num) }}">Next</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">

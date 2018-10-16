@@ -9,16 +9,31 @@ from app.jrnl.forms import JrnlForm
 from app.models import Jrnl
 
 
-@bp.route('/jrnl_ed', methods=['POST', 'GET'])
+@bp.route('/jrnl_new/', methods=['POST', 'GET'])
 @login_required
-def jrnl_ed():
+def jrnl_new():
     form = JrnlForm()
     if form.validate_on_submit():
         jrnl = Jrnl(body=form.jrnl.data, author=current_user)
         db.session.add(jrnl)
         db.session.commit()
         flash('Added new Jrnl entry!')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('jrnl.jrnl_list'))
+
+
+@bp.route('/jrnl_ed/<int:id>', methods=['POST', 'GET'])
+@login_required
+def jrnl_ed(id):
+    form = JrnlForm()
+    jrnl = Jrnl.query.get(id)
+
+    if form.validate_on_submit():
+        jrnl.body = form.jrnl.data
+        db.session.add(jrnl)
+        db.session.commit()
+        flash('Sucessfuly edited Jrnl id: ' + str(jrnl.id))
+        return redirect(url_for('jrnl.jrnl_list'))
+    form.jrnl.data = jrnl.body
     return render_template('jrnl_ed.html', form=form)
 
 
