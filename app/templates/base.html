@@ -111,6 +111,13 @@
 {% block js_scripts %}
 {% endblock %}
 
+<link rel="stylesheet"
+{#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/obsidian.min.css">#}
+{#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/github.min.css">#}
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/tomorrow-night.min.css">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
