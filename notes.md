@@ -53,6 +53,24 @@
 
 ## JRNL
 
+### 2018-10-15
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://lukaszherok.com
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=lukaszherok.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/lukaszherok.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/lukaszherok.com/privkey.pem
+   Your cert will expire on 2019-01-13. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+
 ### 2018-10-02
 Disable SELinux.
 certs where moved from /home/lukasz/certs to /etc/nginx (selinux problem)
