@@ -9,7 +9,7 @@ from app.jrnl.forms import JrnlForm
 from app.models import Jrnl
 
 
-@bp.route('/jrnl_new/', methods=['POST', 'GET'])
+@bp.route('/jrnl_new', methods=['POST', 'GET'])
 @login_required
 def jrnl_new():
     form = JrnlForm()
@@ -19,6 +19,7 @@ def jrnl_new():
         db.session.commit()
         flash('Added new Jrnl entry!')
         return redirect(url_for('jrnl.jrnl_list'))
+    return render_template('jrnl_ed.html', form=form)
 
 
 @bp.route('/jrnl_ed/<int:id>', methods=['POST', 'GET'])
