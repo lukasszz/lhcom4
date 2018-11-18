@@ -1,13 +1,13 @@
 ## TODO
 
-[ ] 	87.98.239.5
-[ ] Deploy for production 
-    [ ] Setup server
-    [ ] Disalbe debug mode
-    [ ] Domain
+[x] 	87.98.239.5
+[x] Deploy for production 
+    [x] Setup server
+    [x] Disalbe debug mode
+    [x] Domain
     
-[ ] https
-[ ] Markdown support
+[x] https
+[x] Markdown support
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
 [ ] Jrnl tags: #hashtag +project 
