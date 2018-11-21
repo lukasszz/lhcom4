@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container py-5">
+        <h1 class="mb-5">Quantum</h1>
+
+        <div class="row">
+            {% for b in data['backends'] %}
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box {{ 'bg-success' if b['operational'] else 'bg-dark'  }}">
+                        <span class="info-box-icon"><i class="fa fa-microchip"></i></span>
+
+                        <div class="info-box-content">
+
+                            <span class="info-box-text">{{ b['name'] }}</span>
+                            <span class="info-box-number">{{ b['pending_jobs'] }}</span>
+                            <span class="description">Pending jobs</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            {% endfor %}
+        </div>
+        <p>IBM Quantum backends status checked {{ moment(data['tms']).fromNow() }}.</p>
+    </div>
+{% endblock %}
