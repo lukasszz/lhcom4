@@ -6,7 +6,7 @@
         <div class="row mt-5">
             {% for jrnl in jrnls.items %}
 
-                <div class="container card m-2 border-success" , style="max-width: 30%; min-width: 100px;">
+                <div class="col-md-3 col-sm-6 col-xs-12 container border-success card m-2">
                     <div class="card-body">
                         <p>{{ jrnl.body | markdown }}</p>
                         <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
