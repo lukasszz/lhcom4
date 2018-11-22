@@ -5,6 +5,8 @@
     <div class="container py-5">
         <h1 class="mb-5">Quantum</h1>
 
+        <h2>IBM Q Backend</h2>
+        <p><a href="https://quantumexperience.ng.bluemix.net/">IBM Quantum</a> backends status checked <i>{{ moment(data['tms']).fromNow() }}.</i></p>
         <div class="row">
             {% for b in data['backends'] %}
 
@@ -24,6 +26,6 @@
                 </div>
             {% endfor %}
         </div>
-        <p>IBM Quantum backends status checked {{ moment(data['tms']).fromNow() }}.</p>
+
     </div>
 {% endblock %}

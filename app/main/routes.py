@@ -1,3 +1,4 @@
+import os
 import pickle
 from math import ceil
 
@@ -22,11 +23,11 @@ def index():
 
 @bp.route('/dash')
 def dash():
-    f = open('/tmp/ibm_backends.pickle', 'rb')
-    dr = pickle.load(f)
-    print(dr['tms'])
-    print(dr['backends'])
-
+    if os.path.isfile(current_app.config['IBM_BACKENDS_PICKLE']):
+        f = open(current_app.config['IBM_BACKENDS_PICKLE'], 'rb')
+        dr = pickle.load(f)
+    else:
+        dr = {'tms': None, 'backends': []}
     return render_template('dash.html', title='Dash', user=current_user, data=dr)
 
 

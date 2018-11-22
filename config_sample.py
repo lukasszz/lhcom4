@@ -11,3 +11,5 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     ELASTICSEARCH_URL = 'http://127.0.0.1:9200/'
+
+    IBM_BACKENDS_PICKLE = 'PATH/ibm_backends.pickle'
