@@ -6,12 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Łukasz Herok</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">
 
     <link rel='stylesheet' href='//cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='neon-glow/css/bootstrap4-neon-glow.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='neon-glow/css/bootstrap4-neon-glow.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='lh.css') }}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15477439-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-15477439-8');
+    </script>
 
 </head>
 
@@ -23,7 +39,8 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a href="{{ url_for('main.index') }}" class="btn btn-outline-light btn-outline-brand navbar-brand"
+    <a href="{{ url_for('main.index') }}"
+       class="btn btn-outline-light btn-outline-brand navbar-brand"
        style="font-style: oblique;">
         ŁH
     </a>
@@ -41,10 +58,10 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{{ url_for('jrnl.jrnl_list') }}">About#}
-{#                </a>#}
-{#            </li>#}
+            {#            <li class="nav-item">#}
+            {#                <a class="nav-link" href="{{ url_for('jrnl.jrnl_list') }}">About#}
+            {#                </a>#}
+            {#            </li>#}
             {#            <li class="nav-item">#}
             {#                <a class="nav-link" href="#!">Link</a>#}
             {#            </li>#}
@@ -71,14 +88,16 @@
 
 
                 <li class="nav-item ">
-                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('jrnl.jrnl_new') }}" class="btn  ">
+                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('jrnl.jrnl_new') }}"
+                       class="btn  ">
                         <span class="fa fa-lg fa-pencil"></span>
                     </a>
                 </li>
 
 
                 <li class="nav-item ">
-                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('auth.logout') }}" class="btn  ">
+                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('auth.logout') }}"
+                       class="btn  ">
                         <span class="fa fa-lg fa-sign-out"></span>
                     </a>
                 </li>
@@ -117,8 +136,8 @@
 {% endblock %}
 
 <link rel="stylesheet"
-{#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/obsidian.min.css">#}
-{#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/github.min.css">#}
+        {#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/obsidian.min.css">#}
+        {#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/github.min.css">#}
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/tomorrow-night.min.css">
 <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
