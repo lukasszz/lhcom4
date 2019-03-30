@@ -52,20 +52,33 @@
 
 
 ## JRNL
+### 2019-01-19 1910
+$ sudo certbot --nginx certonly
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   Your key file has been saved at:
+   Your cert will expire on 2019-04-10. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+
+$ [root@serwer-1 lhcom4]# ./update_and_reload.sh
 
 ### 2018-10-15
+Installed ssl certificate from letsencrypt.org with just:
+
+
+$ sudo dnf install certbot-nginx
+$ sudo certbot --nginx
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Congratulations! You have successfully enabled https://lukaszherok.com
 
 You should test your configuration at:
-https://www.ssllabs.com/ssltest/analyze.html?d=lukaszherok.com
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/lukaszherok.com/fullchain.pem
    Your key file has been saved at:
-   /etc/letsencrypt/live/lukaszherok.com/privkey.pem
    Your cert will expire on 2019-01-13. To obtain a new or tweaked
    version of this certificate in the future, simply run certbot again
    with the "certonly" option. To non-interactively renew *all* of
