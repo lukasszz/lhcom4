@@ -70,5 +70,25 @@
         </div>
     </div>
 
+    <div class="py-5">
+         <h2>Journal of my recent #qc activities</h2>
+
+        <div class="row mt-5">
+            {% for jrnl in jrnls %}
+                <div  style="" class="col m-2 container lh-col-card border-success">
+                    <div class="card-body">
+                        <p style="min-width: 150px;">{{ jrnl.body | markdown }}</p>
+                        <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
+                        {% if not current_user.is_anonymous %}
+                            <a href="{{ url_for('jrnl.jrnl_ed', id=jrnl.id) }}">.</a>
+                        {% endif %}
+                        </footer>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
 </div>
 {% endblock %}

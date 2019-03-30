@@ -28,7 +28,10 @@ def dash():
         dr = pickle.load(f)
     else:
         dr = {'tms': None, 'backends': []}
-    return render_template('dash.html', title='Dash', user=current_user, data=dr)
+
+    jrnls, total = Jrnl.search('#qc', 1, 10)
+
+    return render_template('dash.html', title='Dash', user=current_user, data=dr, jrnls=jrnls)
 
 
 @bp.route('/search')
@@ -39,6 +42,7 @@ def search():
     page = request.args.get('page', 1, type=int)
     jrnls, total = Jrnl.search(g.search_form.q.data, page,
                                per_page)
+
     next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) \
         if total > page * per_page else None
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
