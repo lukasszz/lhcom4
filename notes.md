@@ -53,7 +53,10 @@
 
 ## JRNL
 ### 2019-01-19 1910
+Script in lhcom4/scripts/certbot_ssl.sh
+
 $ sudo certbot --nginx certonly
+
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at:
    Your key file has been saved at:
