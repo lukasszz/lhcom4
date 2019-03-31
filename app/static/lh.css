@@ -3,6 +3,10 @@ body {
     color: #ededed;
 }
 
+.figure-caption {
+    color: gray;
+}
+
 
 .navbar-dark .navbar-nav .nav-link {
     color: #a0a0a0;

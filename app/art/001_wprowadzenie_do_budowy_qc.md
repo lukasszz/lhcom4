@@ -7,8 +7,10 @@ dr inż. Łukasz Herok, lukasz@lukaszherok.com
 
 Wiele wskazuje na to, że komputery przyszłości będą komputerami mieszanymi. Po części komputerami klasycznymi, działającymi na dobrze znanych nam bitach, a po części komputerami kwantowymi, działającymi na kubitach [1]. Część klasyczna będzie odpowiadała za kontrolę nad całością prowadzonych obliczeń i wykonywania dobrze nam znanych już algorytmów. Jej bardzo ważnym zadaniem będzie również dokonywanie korekcji błędów układu kwantowego. Natomiast podzespół kwantowy (Rys. 1), będzie przeznaczony do wykonywania dedykowanych algorytmów tak zwanych algorytmów kwantowych, które nie mogą być w realnym czasie przetworzone przez procesory bitowe. Sformułowanie *komputer kwantowy* sprowadza się w takim razie nie urządzenia jako całości ale do podzespołu odpowiedzialnego za obliczenia kwantowe, analogicznie jak ma to już dziś miejsce z innymi układami zoptymalizowanymi dla danej klasy obliczeń, na przykład kart graficznych.
 
-![(Rys. 1) Proponowana architektura układu kwantowego [1]](https://d2mxuefqeaa7sj.cloudfront.net/s_3D8CCC8E51D3D4D6DC4BB2F775D2D836E51D82EAF0A041BC790B35B7C3A9ECC1_1531476089020_QC-stack-in3D-01.png)
-
+<figure class="figure">
+  <img src="/static/art/001/QC-stack-in3D-01.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center">(Rys. 1) Proponowana architektura układu kwantowego [1]</figcaption>
+</figure>
 
 
 ## Zastosowanie akceleratorów kwantowych
