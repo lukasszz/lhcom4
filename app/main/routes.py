@@ -24,13 +24,18 @@ def index():
     return render_template('index.html', title='Home', user=current_user)
 
 
-@bp.route('/arts')
-def art():
-    with open("app/art/wprowadzenie.md") as f:
+@bp.route('/art/<md_file>')
+def art_view(md_file):
+    with open("app/art/" + md_file + ".md") as f:
         text = f.read()
         content = Markup(markdown.markdown(text))
 
-    return render_template('art_list.html', title='Arts', user=current_user, content=content)
+    return render_template('art_view.html', user=current_user, content=content)
+
+
+@bp.route('/arts')
+def art():
+    return render_template('art_list.html', title='Arts', user=current_user)
 
 
 @bp.route('/dash')

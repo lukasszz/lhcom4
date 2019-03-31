@@ -8,6 +8,7 @@
     
 [x] https
 [x] Markdown support
+[ ] Rename dash to quant (template, static, routes)
 [ ] Think what I need: activites, jrnl, blog, reads, tweets.... phisycs, software dev, business
 
 [ ] Jrnl tags: #hashtag +project 
