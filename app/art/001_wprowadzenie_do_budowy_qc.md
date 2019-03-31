@@ -2,12 +2,12 @@
 dr inż. Łukasz Herok, lukasz@lukaszherok.com
 
 
-*Artykuł ten dostarcza podstawowe informacje o komputerach kwantowych. Omawiane są podstawy fizyczne na który komputer* *kwantowy* *działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.*
+*Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na który komputer* *kwantowy* *działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.*
 
 
 Wiele wskazuje na to, że komputery przyszłości będą komputerami mieszanymi. Po części komputerami klasycznymi, działającymi na dobrze znanych nam bitach, a po części komputerami kwantowymi, działającymi na kubitach [1]. Część klasyczna będzie odpowiadała za kontrolę nad całością prowadzonych obliczeń i wykonywania dobrze nam znanych już algorytmów. Jej bardzo ważnym zadaniem będzie również dokonywanie korekcji błędów układu kwantowego. Natomiast podzespół kwantowy (Rys. 1), będzie przeznaczony do wykonywania dedykowanych algorytmów tak zwanych algorytmów kwantowych, które nie mogą być w realnym czasie przetworzone przez procesory bitowe. Sformułowanie *komputer kwantowy* sprowadza się w takim razie nie urządzenia jako całości ale do podzespołu odpowiedzialnego za obliczenia kwantowe, analogicznie jak ma to już dziś miejsce z innymi układami zoptymalizowanymi dla danej klasy obliczeń, na przykład kart graficznych.
 
-<figure class="figure">
+<figure class="figure text-center">
   <img src="/static/art/001/QC-stack-in3D-01.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption text-center">(Rys. 1) Proponowana architektura układu kwantowego [1]</figcaption>
 </figure>
@@ -22,22 +22,26 @@ W teorii każdy algorytm kwantowy może być zaimplementowany i uruchomiony na k
 
 ## Podstawy fizyczne
 
-Zasada działania jednostki kwantowej opiera się na dwóch zjawiskach fizycznych: **superpozycji stanów i splątania kwantowego**.  Klasyczne komputery operują na bitach, które mają dwa jednoznacznie określone stany: 0 lub 1. Natomiast w komputerze kwantowym wykorzystywane są kubity. Potrafią one przyjmować nie tylko dwa z góry zdefiniowane stany. Działają one w przestrzeni stanów, gdzie bazowe stany opisujemy jako: $$|0>$$ i $$|1>$$, jednak w odróżnieniu od bitu, kubit może znajdować się w **superpozycji** tych dwóch stanów \\( |\psi> = \alpha|0> + \beta|1> \\), gdzie $$\alpha, \beta$$ to liczby zespolone, których kwadrat $$|\alpha|^2, |\beta|^2$$ określają prawdopodobieństwo wykonania pomiaru o wyniku $$+1$$ albo $$-1$$ odpowiadających stanom$$|0>$$ i $$|1>$$. Należy pamiętać, że muszą one spełniać warunek normalizacji, tzn.  $$|\alpha|^2 + |\beta|^2 = 1$$. Geometrycznie stan kubitu można zaprezentować za pomoc sfery Blocha (Rys. 2).
+Zasada działania jednostki kwantowej opiera się na dwóch zjawiskach fizycznych: **superpozycji stanów i splątania kwantowego**.  Klasyczne komputery operują na bitach, które mają dwa jednoznacznie określone stany: 0 lub 1. Natomiast w komputerze kwantowym wykorzystywane są kubity. Potrafią one przyjmować nie tylko dwa z góry zdefiniowane stany. Działają one w przestrzeni stanów, gdzie bazowe stany opisujemy jako: \\(|0>\\) i \\(|1>\\), jednak w odróżnieniu od bitu, kubit może znajdować się w **superpozycji** tych dwóch stanów \\( |\psi> = \alpha|0> + \beta|1> \\), gdzie \\(\alpha, \beta\\) to liczby zespolone, których kwadrat \\(|\alpha|^2, |\beta|^2\\) określają prawdopodobieństwo wykonania pomiaru o wyniku \\(0\\) albo \\(1\\) odpowiadających stanom \\(|0>\\) i \\(|1>\\). Należy pamiętać, że muszą one spełniać warunek normalizacji, tzn.  \\(|\alpha|^2 + |\beta|^2 = 1\\). Geometrycznie stan kubitu można zaprezentować za pomoc sfery Blocha (Rys. 2).
 
-![(Rys. 2) Sfera Blocha. Na biegunach znajdują się stany bazowe, a na powierzchni kuli znajdują się pozostałe, czyste stany kwantowe.](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bloch_sphere.svg/256px-Bloch_sphere.svg.png)
+<figure class="figure text-center">
+  <img src="/static/art/001/bloch_sphere.png" class="figure-img img-fluid rounded " alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center">  (Rys. 2) Sfera Blocha. Na biegunach znajdują się stany bazowe, a na powierzchni kuli znajdują się pozostałe, czyste stany kwantowe.</figcaption>
+</figure>
 
 
-W komputerach klasycznych bity łączymy w bajty. Taki zestaw połączonych bitów potrafi w danej chwili przechowywać tylko jedną informację - jeden stan układ. Sprawa ma się inaczej gdy użyjemy kubitów. Wykorzystując zjawisko **splątania kwantowego,** łączymy je w większe układy. W przypadku takiego splątanego układu kubitowego dysponujemy stanem który jest faktycznie superpozycją wszystkich możliwych stanów tego układu. Na przykład$$|\psi> = \alpha_0|0...00> + \alpha_1|0...01> + ... + \alpha_{{2^n}-1}|1...11>$$.
-mieści w sobie informację nie o jednym stanie, ale $$2^n - 1$$. Czyli na przykład układ dwukubitowy może znajdować się w superpozycji 4 stanów bazowych: 00, 01, 10 i 11. Należy pamiętać, że stan splątany nie może być zdekomponowany w oddzielne, pojedyncze stany kubitowe i zapisany jako iloczyn tensorowy stanów jedno-kubitowych.
 
-Przykładowo stan $$\begin{bmatrix} \alpha\gamma \\ \alpha\delta \\ \beta\gamma \\ \beta\delta \end{bmatrix}$$nie jest stanem splątanym, ponieważ można go zapisać jak iloczyn tensorowy $$|\psi> \otimes |\phi>$$ dwóch wektorów: $$|\psi>= \begin{bmatrix} \alpha \\ \beta \end{bmatrix}$$ i $$|\phi>= \begin{bmatrix} \gamma \\ \delta \end{bmatrix}$$
+W komputerach klasycznych bity łączymy w bajty. Taki zestaw połączonych bitów potrafi w danej chwili przechowywać tylko jedną informację - jeden stan układ. Sprawa ma się inaczej gdy użyjemy kubitów. Wykorzystując zjawisko **splątania kwantowego,** łączymy je w większe układy. W przypadku takiego splątanego układu kubitowego dysponujemy stanem który jest faktycznie superpozycją wszystkich możliwych stanów tego układu. Na przykład \\(|\psi> = \alpha_0|0...00> + \alpha_1|0...01> + ... + \alpha_{{2^n}-1}|1...11>\\).
+mieści w sobie informację nie o jednym stanie, ale \\(2^n - 1\\). Czyli na przykład układ dwukubitowy może znajdować się w superpozycji 4 stanów bazowych: \\(00, 01, 10 i 11\\). Należy pamiętać, że stan splątany nie może być zdekomponowany w oddzielne, pojedyncze stany kubitowe i zapisany jako iloczyn tensorowy stanów jedno-kubitowych.
+
+Przykładowo stan  \\(\begin{bmatrix} \alpha\gamma \\ \alpha\delta \\ \beta\gamma \\ \beta\delta \end{bmatrix}\\) nie jest stanem splątanym, ponieważ można go zapisać jak iloczyn tensorowy  \\(|\psi> \otimes |\phi>\\)  dwóch wektorów:  \\(|\psi>= \begin{bmatrix} \alpha \\ \beta \end{bmatrix}\\)  i  \\(|\phi>= \begin{bmatrix} \gamma \\ \delta \end{bmatrix}\\) 
 Natomiast stany: 
 $$|\phi^+> = \frac{|11> + |00>}{\sqrt{2}}$$
 $$|\phi^-> = \frac{|11> - |00>}{\sqrt{2}}$$
 $$|\psi^+> = \frac{|01> + |10>}{\sqrt{2}}$$
 $$|\psi^-> = \frac{|01> - |10>}{\sqrt{2}}$$
 
-Są stanami splątanymi ponieważ nie można ich zapisać jako iloczyn tensorowy dwóch wektorów. Zaprezentowane wyżej stany są to stany Bella. W podanym zapisie w każdym ket na pierwszej pozycji występuję stan pierwszego kubitu, na drugim miejscu kubitu drugiego. Wszystkie z wyżej wymienionych par Bella wykorzystywane są w informatyce kwantowej, jednak najczęściej używany jest $$|\Phi^+>$$, który można zapisać równoważnie, do podanej wcześniej notacji $$\begin{bmatrix} 1 \\ 0 \\ 0 \\ 1 \end{bmatrix}$$.
+Są stanami splątanymi ponieważ nie można ich zapisać jako iloczyn tensorowy dwóch wektorów. Zaprezentowane wyżej stany są to stany Bella. W podanym zapisie w każdym ket na pierwszej pozycji występuję stan pierwszego kubitu, na drugim miejscu kubitu drugiego. Wszystkie z wyżej wymienionych par Bella wykorzystywane są w informatyce kwantowej, jednak najczęściej używany jest  \\(|\Phi^+>\\) , który można zapisać równoważnie, do podanej wcześniej notacji  \\(\begin{bmatrix} 1 \\ 0 \\ 0 \\ 1 \end{bmatrix}\\) .
 
 Dzięki wykorzystaniu superpozycji stanów oraz splątania kwantowego możemy budować układy kubitowe w których przestrzeń stanów, szybko rośnie wraz z ilością dostępnych kubitów. Daje to możliwość wykonywania obliczeń o złożonościach niedostępnych dla komputerów klasycznych.
 
@@ -71,13 +75,14 @@ Materiałem wykorzystanym do budowy tych kubitów jest diament i występujący w
 **Kubity nadprzewodzące**
 Nadprzewodnictwo jest to efekt kwantowy, który jest obserwowalny makroskopowo. Wydaje się więc ono naturalnym kierunkiem przy budowie komputerów kwantowych. Kubity nadprzewodzące są budowane jako elektrodynamiczne obwody nadprzewodzące, do opisu których nie używa się klasycznych pojęć prądu i napięcia, ale funkcji falowej jej amplitudy i fazy. Przykładem kubitu nadprzewodzącego jest *t**ransmon* (Rys. 3.). Zalicza się on do nadprzewodzących kubitów ładunkowych. Wykorzystane w nim złącza Josephsona pozwalają rozwarstwić harmoniczne spektrum energii, tak aby można było łatwo wyróżnić dwa stany: podstawowy i pierwszy wzbudzony. W transmonie odczytów dokonujemy poprzez złącza *readout resonators*. W zależności od stanu kubitu na wyjściach obserwujemy przesunięcie w częstotliwości rezonatora. Aby wyeliminować szum przy odczytach dokonuje się wielu odczytów i z histogramu odczytywana jako wartość wynikową ta która miała zarejestrowanych najwięcej zliczeń. Operacje kubitowe realizowane są z wykorzystaniem oscylacji Rabi’ego poprzez użycie zewnętrznego oscylujące pola elektrycznego. Rotacji w płaszczyźnie X-Y dokonujemy poprzez krótkie impulsy o poprawnej fazie, amplitudzie i długości. Parowanie qubit-qubit realizowane jest poprzez specjalną szynę rezonująca łączącą kubity. Aby utworzyć stan splątany konieczne jest użycie bramek dwukubitowych np. CNOT.
 
-![(Rys 3.) a). Diagram obwodu tworzącego transmon b) Uproszczony schemat prezentujący budowę transmonu [5]](https://d2mxuefqeaa7sj.cloudfront.net/s_D0C2451B3AF7791137A0A1D929C6F984195D30D4988AB11D05912569429298AF_1541246791996_Zrzut+ekranu+z+2018-11-03+13-05-52.png)
-
-
+<figure class="figure text-center">
+  <img style="width: 50%" src="/static/art/001/transmon.png" class="figure-img img-fluid rounded " alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center">  (Rys 3.) a). Diagram obwodu tworzącego transmon b) Uproszczony schemat prezentujący budowę transmonu [5].</figcaption>
+</figure>
 
 
 **Kubity topologiczne**
-Bazują one na kwazicząsteczce nazywanej *fermionem* *Majoran**y*, która jest jednocześnie swoją antycząsteczką $$\gamma = \gamma^\dagger$$. W wyniku połączenia się dwóch Majoranów możemy otrzymać elektron lub nie otrzymać elektronu. Nadprzewodniki są dobrym środowiskiem do wytwarzania cząstek Majorany, gdzie formowane są one poprzez dziurę i elektron. Operacje kwantowe na kubitach topologicznych wykonywane są poprzez przeplatanie. Kubity topologiczne są obiecującym kierunkiem badań, ponieważ są one mniej czułe na zaburzenia pochodzące z zewnątrz w porównaniu do innych rodzajów kubitów.
+Bazują one na kwazicząsteczce nazywanej *fermionem* *Majoran**y*, która jest jednocześnie swoją antycząsteczką  \\(\gamma = \gamma^\dagger\\) . W wyniku połączenia się dwóch Majoranów możemy otrzymać elektron lub nie otrzymać elektronu. Nadprzewodniki są dobrym środowiskiem do wytwarzania cząstek Majorany, gdzie formowane są one poprzez dziurę i elektron. Operacje kwantowe na kubitach topologicznych wykonywane są poprzez przeplatanie. Kubity topologiczne są obiecującym kierunkiem badań, ponieważ są one mniej czułe na zaburzenia pochodzące z zewnątrz w porównaniu do innych rodzajów kubitów.
 
 
 ## Podsumowanie
