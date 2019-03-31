@@ -4,6 +4,9 @@ from math import ceil
 
 from flask import render_template, g, redirect, request, url_for, current_app
 from flask_login import current_user
+import markdown
+from markupsafe import Markup
+
 from app.main.forms import SearchForm
 
 from app.main import bp
@@ -19,6 +22,15 @@ def before_request():
 @bp.route('/index')
 def index():
     return render_template('index.html', title='Home', user=current_user)
+
+
+@bp.route('/arts')
+def art():
+    with open("app/art/wprowadzenie.md") as f:
+        text = f.read()
+        content = Markup(markdown.markdown(text))
+
+    return render_template('art_list.html', title='Arts', user=current_user, content=content)
 
 
 @bp.route('/dash')
