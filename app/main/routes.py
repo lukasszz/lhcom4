@@ -46,9 +46,7 @@ def dash():
     else:
         dr = {'tms': None, 'backends': []}
 
-    jrnls, total = Jrnl.search('#qc', 1, 10)
-    jrnls = [j for j in jrnls]
-    jrnls.sort(key=lambda x: x.id, reverse=True)
+    jrnls = Jrnl.get_news_filter('#qc').limit(10)
 
     return render_template('dash.html', title='Dash', user=current_user, data=dr, jrnls=jrnls)
 

@@ -84,3 +84,8 @@ class Jrnl(SearchableMixin, db.Model):
     @staticmethod
     def get_news():
         return Jrnl.query.order_by(Jrnl.id.desc())
+
+    @staticmethod
+    def get_news_filter(like):
+
+        return Jrnl.query.filter(Jrnl.body.contains(like)).order_by(Jrnl.id.desc())
