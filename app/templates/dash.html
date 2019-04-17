@@ -29,12 +29,30 @@
             {% endfor %}
         </div>
     </div>
+     <div class="py-5">
+        <h2>Compressing bit strings in qubits using superposition effect</h2>
+        <div class="row">
+            <div class="col-6">
+                <p class="py-5">
+                     My new tutorial.
+                    The aim of this tutorial is to show you how quantum computers can store information encoded in a bit string
+            using  significantly fewer qubits than classical bits. It is possible thanks to
+            the superposition effect. I will try to explain it through the example.
+                    <a href="https://github.com/Qiskit/qiskit-tutorials/blob/master/community/hello_world/bitstring_compression.ipynb"> Go to the tutorial >>> </a>
+                </p>
+
+            </div>
+            <div class="col-6">
+                <img style="width: 400px;" src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
+            </div>
+        </div>
+    </div>
     <div class="py-5">
         <h2>IBM Thomas J. Watson Research Center</h2>
         <div class="row">
             <div class="col-6">
                 <p class="py-5">
-                    Pariticipated in Qiskit 2019 Camp at IBM Thomas J. Watson Research Center in Yorktown Heights, NY
+                    Pariticipated in <a href="https://qiskit.camp/"> Qiskit 2019</a> Camp at IBM Thomas J. Watson Research Center in Yorktown Heights, NY
                     USA.
 
                     During the 24-hour hackathon in the Mountain Top Inn & Resort Killington, VT, we developed
@@ -66,6 +84,26 @@
             </div>
             <div class="col-6">
                 <img style="width: 400px;" src="{{ url_for('static', filename='quant/qtm2x2.png') }}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5">
+        <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
+        <div class="row">
+            <div class="col-6">
+                <p class="py-5">
+
+                    Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
+            który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
+            cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
+                    <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text >>> </a>
+                </p>
+
+
+            </div>
+            <div class="col-6">
+                <img style="width: 400px;" src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"/>
             </div>
         </div>
     </div>
