@@ -29,84 +29,84 @@
             {% endfor %}
         </div>
     </div>
-     <div class="py-5">
-        <h2>Compressing bit strings in qubits using superposition effect</h2>
-        <div class="row">
-            <div class="col-6">
-                <p class="py-5">
-                     My new tutorial.
-                    The aim of this tutorial is to show you how quantum computers can store information encoded in a bit string
-            using  significantly fewer qubits than classical bits. It is possible thanks to
-            the superposition effect. I will try to explain it through the example.
-                    <a href="https://github.com/Qiskit/qiskit-tutorials/blob/master/community/hello_world/bitstring_compression.ipynb"> Go to the tutorial >>> </a>
-                </p>
 
-            </div>
-            <div class="col-6">
-                <img style="width: 400px;  border-radius: 6px;" src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
-            </div>
+
+    <div class="row py-5">
+        <div class="col-8">
+            <h2>Compressing bit strings in qubits using superposition effect</h2>
+            <p class="py-3">
+                My new tutorial.
+                The aim of this tutorial is to show you how quantum computers can store information encoded in a bit
+                string
+                using significantly fewer qubits than classical bits. It is possible thanks to
+                the superposition effect. I will try to explain it through the example.
+                <a href="https://github.com/Qiskit/qiskit-tutorials/blob/master/community/hello_world/bitstring_compression.ipynb">
+                    Go to the tutorial >>> </a>
+            </p>
         </div>
-    </div>
-    <div class="py-5">
-        <h2>IBM Thomas J. Watson Research Center</h2>
-        <div class="row">
-            <div class="col-6">
-                <p class="py-5">
-                    Pariticipated in <a href="https://qiskit.camp/"> Qiskit 2019</a> Camp at IBM Thomas J. Watson Research Center in Yorktown Heights, NY
-                    USA.
-
-                    During the 24-hour hackathon in the Mountain Top Inn & Resort Killington, VT, we developed
-                    a <a href="https://github.com/lukasszz/FlappyQ">FlappyQat</a> game for learning quantum gates.
-                </p>
-
-            </div>
-            <div class="col-6">
-                <img style="width: 400px;  border-radius: 6px;" src="{{ url_for('static', filename='quant/lh_at_ibm3.jpg') }}"/>
-            </div>
-        </div>
-    </div>
-    <div class="py-5">
-        <h2>The Building Blocks of a Quantum Computer: Part 1</h2>
-        <div class="row">
-            <div class="col-6">
-                <p class="py-5">
-                    This is to certify that
-                    Delft University of Technology
-                    Łukasz Herok
-                    successfully completed and received a passing grade in
-                    QTM2x: The Building Blocks of a Quantum
-                    Computer: Part 1
-                    a course of study offered by DelftX, an online learning initiative of Delft University of
-                    Technology through edX.
-                </p>
-
-
-            </div>
-            <div class="col-6">
-                <img style="width: 400px;  border-radius: 6px;" src="{{ url_for('static', filename='quant/qtm2x2.png') }}"/>
-            </div>
+        <div class="col-4">
+            <img class="figure-img img-fluid rounded"
+                 src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
         </div>
     </div>
 
-    <div class="py-5">
-        <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
-        <div class="row">
-            <div class="col-6">
-                <p class="py-5">
+    <div class="row py-5">
+        <div class="col-8">
+            <h2>IBM Thomas J. Watson Research Center</h2>
+            <p class="py-3">
+                Pariticipated in <a href="https://qiskit.camp/"> Qiskit 2019</a> Camp at IBM Thomas J. Watson Research
+                Center in Yorktown Heights, NY
+                USA.
 
-                    Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
-            który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
-            cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
-                    <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text >>> </a>
-                </p>
-
-
-            </div>
-            <div class="col-6">
-                <img style="width: 400px;  border-radius: 6px;" src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"/>
-            </div>
+                During the 24-hour hackathon in the Mountain Top Inn & Resort Killington, VT, we developed
+                a <a href="https://github.com/lukasszz/FlappyQ">FlappyQat</a> game for learning quantum gates.
+            </p>
+        </div>
+        <div class="col-4">
+            <img class="figure-img img-fluid rounded"
+                 src="{{ url_for('static', filename='quant/lh_at_ibm3.jpg') }}"/>
         </div>
     </div>
+
+    <div class="row py-5">
+        <div class="col-8">
+            <h2>The Building Blocks of a Quantum Computer: Part&nbsp1</h2>
+            <p class="py-3">
+                This is to certify that
+                Delft University of Technology
+                Łukasz Herok
+                successfully completed and received a passing grade in
+                QTM2x: The Building Blocks of a Quantum
+                Computer: Part 1
+                a course of study offered by DelftX, an online learning initiative of Delft University of
+                Technology through edX.
+            </p>
+        </div>
+        <div class="col-4">
+            <img class="figure-img img-fluid rounded" src="{{ url_for('static', filename='quant/qtm2x2.png') }}"/>
+        </div>
+    </div>
+
+    <div class="row py-5">
+
+        <div class="col-8">
+
+            <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
+            <p class="py-3">
+                Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
+                który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
+                cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
+                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text
+                    >>> </a>
+            </p>
+        </div>
+        <div class="col-4">
+            <img style="border-radius: 6px;" src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"
+                 class="figure-img img-fluid rounded" alt="Quantum computer stack">
+        </div>
+
+    </div>
+
 
     <div class="py-5">
          <h2>Journal of my recent #qc activities</h2>
