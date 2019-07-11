@@ -1,16 +1,11 @@
 [Unit]
 Description=uWSGI lhcom4
-After=syslog.target
+After=network.target
 
 [Service]
 ExecStart=/usr/bin/bash -c 'cd /home/lukasz/lhcom4; venv/bin/uwsgi --ini uwsgi.ini'
 # Requires systemd version 211 or newer
-RuntimeDirectory=uwsgi
 Restart=always
-KillSignal=SIGQUIT
-Type=notify
-StandardError=syslog
-NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
