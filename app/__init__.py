@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_moment import Moment
 from elasticsearch import Elasticsearch
+import certifi
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -39,9 +40,11 @@ def create_app(config_class=Config):
     login.init_app(app)
     moment.init_app(app)
 
-    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
-        if app.config['ELASTICSEARCH_URL'] else None
-
+    app.elasticsearch = None
+    if 'http://' == app.config['ELASTICSEARCH_URL'][:7]:
+        app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']])
+    elif 'https://' == app.config['ELASTICSEARCH_URL'][:7]:
+        app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']], use_ssl=True, ca_certs=certifi.where())
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
