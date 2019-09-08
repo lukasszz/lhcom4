@@ -8,7 +8,7 @@ dr inż. Łukasz Herok, lukasz@lukaszherok.com
 Wiele wskazuje na to, że komputery przyszłości będą komputerami mieszanymi. Po części komputerami klasycznymi, działającymi na dobrze znanych nam bitach, a po części komputerami kwantowymi, działającymi na kubitach [1]. Część klasyczna będzie odpowiadała za kontrolę nad całością prowadzonych obliczeń i wykonywania dobrze nam znanych już algorytmów. Jej bardzo ważnym zadaniem będzie również dokonywanie korekcji błędów układu kwantowego. Natomiast podzespół kwantowy (Rys. 1), będzie przeznaczony do wykonywania dedykowanych algorytmów tak zwanych algorytmów kwantowych, które nie mogą być w realnym czasie przetworzone przez procesory bitowe. Sformułowanie *komputer kwantowy* sprowadza się w takim razie nie urządzenia jako całości ale do podzespołu odpowiedzialnego za obliczenia kwantowe, analogicznie jak ma to już dziś miejsce z innymi układami zoptymalizowanymi dla danej klasy obliczeń, na przykład kart graficznych.
 
 <figure class="figure text-center">
-  <img src="/static/art/001/QC-stack-in3D-01.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <img width="50%" src="/static/art/001/QC-stack-in3D-01.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption text-center">(Rys. 1) Proponowana architektura układu kwantowego [1]</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ W teorii każdy algorytm kwantowy może być zaimplementowany i uruchomiony na k
 Zasada działania jednostki kwantowej opiera się na dwóch zjawiskach fizycznych: **superpozycji stanów i splątania kwantowego**.  Klasyczne komputery operują na bitach, które mają dwa jednoznacznie określone stany: 0 lub 1. Natomiast w komputerze kwantowym wykorzystywane są kubity. Potrafią one przyjmować nie tylko dwa z góry zdefiniowane stany. Działają one w przestrzeni stanów, gdzie bazowe stany opisujemy jako: \\(|0>\\) i \\(|1>\\), jednak w odróżnieniu od bitu, kubit może znajdować się w **superpozycji** tych dwóch stanów \\( |\psi> = \alpha|0> + \beta|1> \\), gdzie \\(\alpha, \beta\\) to liczby zespolone, których kwadrat \\(|\alpha|^2, |\beta|^2\\) określają prawdopodobieństwo wykonania pomiaru o wyniku \\(0\\) albo \\(1\\) odpowiadających stanom \\(|0>\\) i \\(|1>\\). Należy pamiętać, że muszą one spełniać warunek normalizacji, tzn.  \\(|\alpha|^2 + |\beta|^2 = 1\\). Geometrycznie stan kubitu można zaprezentować za pomoc sfery Blocha (Rys. 2).
 
 <figure class="figure text-center">
-  <img src="/static/art/001/bloch_sphere.png" class="figure-img img-fluid rounded " alt="A generic square placeholder image with rounded corners in a figure.">
+  <img width="30%" src="/static/art/001/bloch_sphere.png" class="figure-img img-fluid rounded " alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption text-center">  (Rys. 2) Sfera Blocha. Na biegunach znajdują się stany bazowe, a na powierzchni kuli znajdują się pozostałe, czyste stany kwantowe.</figcaption>
 </figure>
 

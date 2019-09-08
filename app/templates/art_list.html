@@ -6,42 +6,52 @@
     <h1 class="mb-5">Articles</h1>
 
 
-   <div class="row mt-5">
-       <div class="col-4">
-        <img  src="{{ url_for('static', filename='art/002/encoding4.png') }}" class="figure-img img-fluid rounded" alt="">
-       </div>
-       <div class="col-8">
+    <div class="row mt-5">
+        <div class="col-4">
+            <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb"
+               target="_blank">
+                <img src="{{ url_for('static', filename='art/002/encoding4.png') }}"
+                     class="figure-img img-fluid rounded" alt="">
+            </a>
+        </div>
+        <div class="col-8">
 
 
-        <h2> Compressing bit strings in qubits using superposition effect </h2>
+            <h2> Compressing bit strings in qubits using superposition effect </h2>
 
-        <span class="badge badge-primary">Quantum</span>
-        <p style="font-style: italic;">
-            The aim of this tutorial is to show you how quantum computers can store information encoded in a bit string
-            using  significantly fewer qubits than classical bits. It is possible thanks to
-            the superposition effect. I will try to explain it through the example.
-            <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb"> Go to the tutorial >>> </a>
-        </p>
+            <span class="badge badge-primary">Quantum</span>
+            <p style="font-style: italic;">
+                The aim of this tutorial is to show you how quantum computers can store information encoded in a bit
+                string
+                using significantly fewer qubits than classical bits. It is possible thanks to
+                the superposition effect. I will try to explain it through the example.
+                <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb">
+                    Go to the tutorial >>> </a>
+            </p>
         </div>
     </div>
 
-   <div class="row mt-5">
-       <div class="col-4">
-        <img  src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}" class="figure-img img-fluid rounded" alt="Quantum computer stack">
-       </div>
-       <div class="col-8">
+    <div class="row mt-5">
+        <div class="col-4">
+            <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}">
+                <img src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"
+                     class="figure-img img-fluid rounded" alt="Quantum computer stack">
+            </a>
+        </div>
+        <div class="col-8">
 
 
-        <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
+            <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
 
-        <span class="badge badge-primary">Quantum</span>
-        <span class="badge badge-info">Polish</span>
-        <p style="font-style: italic;">
-            Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
-            który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
-            cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
-            <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text >>> </a>
-        </p>
+            <span class="badge badge-primary">Quantum</span>
+            <span class="badge badge-info">Polish</span>
+            <p style="font-style: italic;">
+                Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
+                który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
+                cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
+                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text
+                    >>> </a>
+            </p>
         </div>
     </div>
 

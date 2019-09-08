@@ -31,6 +31,27 @@
     </div>
 
 
+
+    <div class="row py-5">
+        <div class="col-8">
+            <h2>The Building Blocks of a Quantum Computer: Part&nbsp2</h2>
+            <p class="py-3">
+                This is to certify that
+                Łukasz Herok
+                successfully completed and received a passing grade in
+                QTM3x: The Building Blocks of a Quantum Computer: Part 2
+                a course of study offered by DelftX, an online learning initiative of Delft University of Technology.
+            </p>
+        </div>
+
+        <div class="col-4">
+            <a href="https://courses.edx.org/certificates/cf8576cf3aad4598a6bc5016119186b7" target="_blank">
+                <img class="figure-img img-fluid rounded" src="{{ url_for('static', filename='quant/qtm3x.png') }}"/>
+            </a>
+        </div>
+
+    </div>
+
     <div class="row py-5">
         <div class="col-8">
             <h2>Compressing bit strings in qubits using superposition effect</h2>
@@ -45,8 +66,12 @@
             </p>
         </div>
         <div class="col-4">
-            <img class="figure-img img-fluid rounded"
+            <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb"
+               target="_blank">
+
+                <img class="figure-img img-fluid rounded"
                  src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
+            </a>
         </div>
     </div>
 
@@ -73,7 +98,6 @@
             <h2>The Building Blocks of a Quantum Computer: Part&nbsp1</h2>
             <p class="py-3">
                 This is to certify that
-                Delft University of Technology
                 Łukasz Herok
                 successfully completed and received a passing grade in
                 QTM2x: The Building Blocks of a Quantum
@@ -83,7 +107,9 @@
             </p>
         </div>
         <div class="col-4">
-            <img class="figure-img img-fluid rounded" src="{{ url_for('static', filename='quant/qtm2x2.png') }}"/>
+            <a href="https://courses.edx.org/certificates/56e42ec652c04c4ca99e41a37c53e238" target="_blank">
+                <img class="figure-img img-fluid rounded" src="{{ url_for('static', filename='quant/qtm2x2.png') }}"/>
+            </a>
         </div>
     </div>
 
@@ -96,13 +122,15 @@
                 Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
                 który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
                 cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
-                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}"> Read full text
+                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}" target="_blank"> Read full text
                     >>> </a>
             </p>
         </div>
         <div class="col-4">
-            <img style="border-radius: 6px;" src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"
-                 class="figure-img img-fluid rounded" alt="Quantum computer stack">
+            <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}">
+                <img style="border-radius: 6px;" src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"
+                     class="figure-img img-fluid rounded" alt="Quantum computer stack">
+            </a>
         </div>
 
     </div>
