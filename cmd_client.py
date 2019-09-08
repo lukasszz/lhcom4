@@ -16,4 +16,15 @@ app_context.push()
 if 'els_reindex' == command:
     Jrnl.reindex()
     print('Elasticsearch reindexed')
+elif 'els_search' == command:
+    q = sys.argv[2]
+    page = 1
+    per_page = 15
+    jrnls, total = Jrnl.search(q, page, per_page)
+    print("Total: " + str(total['value']))
+    print(jrnls)
+else:
+    print("Command '" + command + "' not found")
+
+print('Koniec')
 
