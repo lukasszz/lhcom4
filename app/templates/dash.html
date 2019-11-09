@@ -30,7 +30,30 @@
         </div>
     </div>
 
-     <div class="row py-5">
+    <div class="row py-5">
+        <div class="col-8">
+            <h2>Grover algorithm explained with matrices calculus</h2>
+            <p class="py-3">
+                This article goes through "Qiskit Textbook Grover's algorithm" explaining it in more details,
+                showing how to apply quantum Gates as the matrix calculus.
+                Grover's algorithm is being described as a searching algorithm for the unstructured database.
+                However, this example shows, how to perform the Groover's algorithm, to make a quantum system to reveal
+                the marked states.
+                <a href="{{ url_for('main.art_view', md_file='003_grover') }}"> Read full text
+                    >>> </a>
+            </p>
+            <div class="font-italic" style="text-align: right">2019-11-09</div>
+        </div>
+
+        <div class="col-4">
+            <a href="{{ url_for('main.art_view', md_file='003_grover') }}">
+                <img src="{{ url_for('static', filename='art/003/qc.png') }}"
+                     class="figure-img img-fluid rounded" alt="">
+            </a></div>
+
+    </div>
+
+    <div class="row py-5">
         <div class="col-8">
             <h2>Presentation "Storing bitstrings in qubits"</h2>
             <p class="py-3">
@@ -47,7 +70,8 @@
 
         <div class="col-4">
             <a href="https://courses.edx.org/certificates/cf8576cf3aad4598a6bc5016119186b7" target="_blank">
-                <img class="figure-img img-fluid rounded" src="{{ url_for('static', filename='quant/bbdays4it.png') }}"/>
+                <img class="figure-img img-fluid rounded"
+                     src="{{ url_for('static', filename='quant/bbdays4it.png') }}"/>
             </a>
         </div>
 
@@ -94,7 +118,7 @@
                target="_blank">
 
                 <img class="figure-img img-fluid rounded"
-                 src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
+                     src="{{ url_for('static', filename='art/002/encoding4.png') }}"/>
             </a>
         </div>
     </div>
@@ -148,9 +172,10 @@
                 Artykuł ten dostarcza podstawowych informacji o komputerach kwantowych. Omawiane są podstawy fizyczne na
                 który komputer kwantowy działa. Wskazywane są potencjalne pola zastosowań. Przedstawiono również wybrane
                 cztery układy na bazie których budowane są kubity oraz pokrótce omówiono zasady ich działania.
-                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}" target="_blank"> Read full text
+                <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}" target="_blank"> Read
+                    full text
                     >>> </a>
-                <div class="font-italic" style="text-align: right">2018-08-31</div>
+            <div class="font-italic" style="text-align: right">2018-08-31</div>
             </p>
         </div>
         <div class="col-4">
@@ -164,20 +189,20 @@
 
 
     <div class="py-5">
-         <h2>Journal of my recent #qc activities</h2>
+        <h2>Journal of my recent #qc activities</h2>
 
         <div class="row mt-5">
             {% for jrnl in jrnls %}
-                <div  style="" class="col m-2 container lh-col-card border-success">
-                    <div class="card-body">
-                        <p style="min-width: 150px;">{{ jrnl.body | markdown }}</p>
-                        <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
+            <div style="" class="col m-2 container lh-col-card border-success">
+                <div class="card-body">
+                    <p style="min-width: 150px;">{{ jrnl.body | markdown }}</p>
+                    <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
                         {% if not current_user.is_anonymous %}
-                            <a href="{{ url_for('jrnl.jrnl_ed', id=jrnl.id) }}">.</a>
+                        <a href="{{ url_for('jrnl.jrnl_ed', id=jrnl.id) }}">.</a>
                         {% endif %}
-                        </footer>
-                    </div>
+                    </footer>
                 </div>
+            </div>
 
             {% endfor %}
         </div>
