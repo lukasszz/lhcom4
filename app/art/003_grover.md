@@ -142,9 +142,13 @@ circ.draw(output='mpl')
 ```
 
 
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_13_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
 
-
-![png](/static/art/003/output_13_0.png)
 
 
 <br/></br>
@@ -192,8 +196,12 @@ circ.draw(output='mpl')
 
 
 
-
-![png](/static/art/003/output_18_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_18_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
 
 
 <br/></br>
@@ -246,10 +254,12 @@ circ.cz(q[1], q[0])
 circ.draw(output='mpl')
 ```
 
-
-
-
-![png](/static/art/003/output_23_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_23_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
 
 
 <br/><br/>
@@ -296,7 +306,13 @@ circ.draw(output='mpl')
 
 
 
-![png](/static/art/003/output_29_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_29_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
+
 
 
 <br/>
@@ -337,7 +353,13 @@ circ.draw(output='mpl')
 
 
 
-![png](/static/art/003/output_33_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_33_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
+
 
 
 <br/>
@@ -383,7 +405,13 @@ circ.draw(output='mpl')
 
 
 
-![png](/static/art/003/output_38_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_38_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
+
 
 
 <br/>
@@ -427,7 +455,13 @@ circ.draw(output='mpl')
 
 
 
-![png](/static/art/003/output_43_0.png)
+<center>
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_43_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
+</center>
+
 
 
 <br/>
@@ -472,13 +506,10 @@ Results 5: |101>, 6: |110>.
 circ.h(q)
 circ.draw(output='mpl')
 ```
-
-
-
-
-![png](/static/art/003/output_49_0.png)
-
-
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_49_0.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
 
 
 ```python
@@ -489,13 +520,12 @@ results = execute(circ, backend=backend, shots=shots).result()
 answer = results.get_counts()
 plot_histogram(answer)
 ```
-
-
-
 <center>
-![png](/static/art/003/output_50_0.png)
+<figure class="figure text-center">
+  <img width="80%" src="/static/art/003/output_50_1.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-center"></figcaption>
+</figure>
 </center>
-
 
 ## Conclusion 
 The example above shows how to apply Grover's procedure over the quantum system. The system returns the states that we already know. More oracles for the qubit system you can find in ["Complete 3-Qubit Grover search on a programmable quantum computer"](https://doi.org/10.1038/s41467-017-01904-7), eg.:
