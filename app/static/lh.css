@@ -2,13 +2,23 @@ body {
     background-color: black;
     color: #A9B7C6;
 }
+
 h1 {
+    color: #e0e5eb;
     border-bottom: 1px solid #101010;
+}
+
+h2 {
+    color: #c1cbd7;
 }
 
 .art {
     padding-left: 7em;
     padding-right: 7em;
+}
+
+.art p {
+    font-size: 1.3em;
 }
 
 .art h1 {
