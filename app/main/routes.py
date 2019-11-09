@@ -28,7 +28,7 @@ def index():
 def art_view(md_file):
     with open("app/art/" + md_file + ".md") as f:
         text = f.read()
-        content = Markup(markdown.markdown(text))
+        content = Markup(markdown.markdown(text, extensions=['fenced_code', 'footnotes', 'toc']))
 
     return render_template('art_view.html', user=current_user, content=content)
 

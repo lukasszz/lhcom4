@@ -8,6 +8,30 @@
 
     <div class="row mt-5">
         <div class="col-4">
+            <a href="{{ url_for('main.art_view', md_file='003_grover') }}">
+                <img src="{{ url_for('static', filename='art/003/qc.png') }}"
+                     class="figure-img img-fluid rounded" alt="">
+            </a>
+        </div>
+        <div class="col-8">
+
+            <h2>Grover algorithm explained with matrices calculus</h2>
+
+            <span class="badge badge-primary">Quantum</span>
+            <p style="font-style: italic;">
+                This article goes through "Qiskit Textbook Grover's algorithm" explaining it in more details,
+                showing how to apply quantum Gates as the matrix calculus.
+                Grover's algorithm is being described as a searching algorithm for the unstructured database.
+                However, this example shows, how to perform the Groover's algorithm, to make a quantum system to reveal
+                the marked states.
+                <a href="{{ url_for('main.art_view', md_file='003_grover') }}"> Read full text
+                    >>> </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-4">
             <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb"
                target="_blank">
                 <img src="{{ url_for('static', filename='art/002/encoding4.png') }}"

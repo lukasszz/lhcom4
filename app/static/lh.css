@@ -1,6 +1,23 @@
 body {
     background-color: black;
-    color: #ededed;
+    color: #A9B7C6;
+}
+h1 {
+    border-bottom: 1px solid #101010;
+}
+
+.art {
+    padding-left: 7em;
+    padding-right: 7em;
+}
+
+.art h1 {
+    border-bottom: 2px solid #303030;
+}
+
+.art h2 {
+    margin-top: 2em;
+    border-bottom: 1px solid #202020;
 }
 
 .figure-caption {
