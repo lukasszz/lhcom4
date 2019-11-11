@@ -26,21 +26,6 @@
 [ ] sending errors by e-mail
 [ ] should I download all the css files localy?
 
-## DONE
-[x] Add to github
-[x] Integrating Search for jrnl
-[x] ResearchGate 
-[x] Enable elasticsearch
-[x] blueprint for jrnl
-[x] blueprint for auth
-[x] Jrnl list pagination
-[x] Jrnl nav bar facelift
-[x] Jrnl list page
-[x] Index page content
-[x] Nav bar for menu #base.html
-[x] Login template
-[x] post_ed template adjust for css
-[x] Base page withotut body #index.html
 
 ## DOC
 - Jrnl - short tweets about what I've done (Tweeter)
@@ -53,6 +38,27 @@
 
 
 ## JRNL
+
+### 2019-11-10
+Adding the site to Google Index by requesting the indexing trough the Google Search Console.
+
+### 2019-10-15
+PyCharm Run/Debug Configuration:
+1. Add > Python
+2. Configuration
+   1. Module name: flask
+   2. Parameters: run
+   3. Evnironment variables: PYTHONUNBUFFERED=1;FLASK_DEBUG=True;FLASK_APP=microblog.py
+   https://gitlab.com/klllh.lukasz.herok/erp-b2b-flask/wikis/Srodowisko-developerskie
+
+### 2019-09-05
+Załadowanie wszystkich wpsiów do ElasticSearch:
+[lhcom4]$ venv/bin/python cmd_client.py els_reindex
+Po chwili powinno się odśweżyć na AWS "Searchable documents" https://eu-central-1.console.aws.amazon.com/es/home?region=eu-central-1#
+
+### 2019-04-20
+Added to: https://search.google.com/search-console
+Verification method by adding TXT filed in DNS
 ### 2019-01-19 1910
 Script in lhcom4/scripts/certbot_ssl.sh
 
