@@ -41,10 +41,11 @@ def create_app(config_class=Config):
     moment.init_app(app)
 
     app.elasticsearch = None
-    if 'http://' == app.config['ELASTICSEARCH_URL'][:7]:
-        app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']])
-    elif 'https://' == app.config['ELASTICSEARCH_URL'][:8]:
-        app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']], use_ssl=True, ca_certs=certifi.where())
+    if app.config['ELASTICSEARCH_URL'] is not None:
+        if 'http://' == app.config['ELASTICSEARCH_URL'][:7]:
+            app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']])
+        elif 'https://' == app.config['ELASTICSEARCH_URL'][:8]:
+            app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']], use_ssl=True, ca_certs=certifi.where())
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
@@ -60,7 +61,7 @@ def create_app(config_class=Config):
     app.pagedown.init_app(app)
 
     from flaskext.markdown import Markdown
-    Markdown(app)
+    Markdown(app,  extensions=['fenced_code', 'footnotes', 'toc'])
 
     return app
 
