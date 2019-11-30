@@ -9,7 +9,7 @@
                     <div class="form-group">
                         {{ form.hidden_tag() }}
                         <label for="{{ form.jrnl.id }}">{{ form.jrnl.label }}</label>
-                        {{ form.jrnl(cols=32, rows=4, class="form-control") }}
+                        {{ form.jrnl(cols=40, rows=8, class="form-control") }}
 
                         {% for error in form.jrnl.errors %}
                             <span style="color: red;">[{{ error }}]</span>
