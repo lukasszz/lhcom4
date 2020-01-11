@@ -32,6 +32,28 @@
 
     <div class="row py-5">
         <div class="col-8">
+            <h2>Constructing quantum gates as matrices for a multi-qubit quantum systems</h2>
+            <p class="py-3">
+                act directly on a single qubits. The question is how to extend the matrices to act on mulitqubit system
+                that is represented by the column vector. This article gives short introduction into qubits and quantum
+                gates, then it shows on the examples how to extends one and two qubit gates for multi qubit system using
+                the matrix algebra.
+                <a href="{{ url_for('main.art_view', md_file='004_mgates') }}"> Read full text
+                    >>> </a>
+            </p>
+            <div class="font-italic" style="text-align: right">2019-11-09</div>
+        </div>
+
+        <div class="col-4">
+            <a href="{{ url_for('main.art_view', md_file='003_grover') }}">
+                <img src="{{ url_for('static', filename='art/004/mgates.png') }}"
+                     class="figure-img img-fluid rounded" alt="">
+            </a></div>
+
+    </div>
+
+    <div class="row py-5">
+        <div class="col-8">
             <h2>Grover algorithm explained with matrices calculus</h2>
             <p class="py-3">
                 This article goes through "Qiskit Textbook Grover's algorithm" explaining it in more details,
