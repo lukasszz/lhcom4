@@ -90,3 +90,24 @@ class Jrnl(SearchableMixin, db.Model):
     def get_news_filter(like):
 
         return Jrnl.query.filter(Jrnl.body.contains(like)).order_by(Jrnl.id.desc())
+
+
+class Post(SearchableMixin, db.Model):
+    __searchable__ = ['body']
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    body = db.Column(db.String())
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Post {}>'.format(self.title)
+
+    @staticmethod
+    def get_news():
+        return Post.query.order_by(Post.id.desc())
+
+    @staticmethod
+    def get_news_filter(like):
+
+        return Post.query.filter(Post.body.contains(like)).order_by(Post.id.desc())
