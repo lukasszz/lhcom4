@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+    <h1 class="">Software development</h1>
+
+    <div class="py-5">
+
+        <div class="row mt-5">
+            {% for jrnl in jrnls %}
+            <div style="" class="col m-2 container lh-col-card border-success">
+                <div class="card-body">
+                    <p style="min-width: 150px;">{{ jrnl.body | markdown }}</p>
+                    <footer class="font-italic" style="text-align: right">{{ moment(jrnl.timestamp).fromNow() }}
+                        {% if not current_user.is_anonymous %}
+                        <a href="{{ url_for('jrnl.jrnl_ed', id=jrnl.id) }}">.</a>
+                        {% endif %}
+                    </footer>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="py-5">
+        <div class="py-5">
+            {% for post in posts %}
+            <h3>{{ post.title }}</h3>
+            <p class="py-3">
+                {{ post.body[:300] }}
+                <a href="{{ url_for('main.art_view', md_file='004_mgates') }}"> Read full text
+                    >>> </a>
+            </p>
+            <div class="font-italic" style="text-align: right">{{ moment(post.timestamp).fromNow() }}</div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

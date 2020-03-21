@@ -53,6 +53,9 @@ def create_app(config_class=Config):
     from app.jrnl import bp as jrnl_bp
     app.register_blueprint(jrnl_bp, url_prefix='/jrnl')
 
+    from app.post import bp as post_bp
+    app.register_blueprint(post_bp, url_prefix='/post')
+
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 

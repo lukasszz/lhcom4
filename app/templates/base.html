@@ -27,6 +27,7 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-15477439-8');
+
     </script>
 
 </head>
@@ -49,63 +50,72 @@
     <div class="collapse navbar-collapse" id="navbarMain">
         <ul class="navbar-nav mr-auto mt-2 mt-md-0">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('jrnl.jrnl_list') }}">Jrnl
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link active" href="{{ url_for('main.dash') }}">Quantum
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url_for('main.art') }}">Arts
+                <a class="nav-link active" href="{{ url_for('main.softdevel') }}">SoftDevel
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#                <a class="nav-link" href="{{ url_for('jrnl.jrnl_list') }}">About#}
-            {#                </a>#}
-            {#            </li>#}
-            {#            <li class="nav-item">#}
-            {#                <a class="nav-link" href="#!">Link</a>#}
-            {#            </li>#}
+
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('jrnl.jrnl_list') }}">Jrnl
+
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('post.post_list') }}">Posts
+
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.art') }}">Arts
+
+                </a>
+            </li>
+            {#
+            <li class="nav-item">#}
+                {# <a class="nav-link" href="{{ url_for('jrnl.jrnl_list') }}">About#}
+                    {# </a>#}
+                {#
+            </li>
+            #}
+            {#
+            <li class="nav-item">#}
+                {# <a class="nav-link" href="#!">Link</a>#}
+                {#
+            </li>
+            #}
 
         </ul>
 
         {% if g.search_form %}
-            <form class="form-inline my-2 my-lg-0" method="get"
-                  action="{{ url_for('main.search') }}">
-                <div class="form-group">
-                    {{ g.search_form.q(size=20, class='form-control',
-                            placeholder=g.search_form.q.label.text) }}
-                </div>
-            </form>
+        <form class="form-inline my-2 my-lg-0" method="get"
+              action="{{ url_for('main.search') }}">
+            <div class="form-group">
+                {{ g.search_form.q(size=20, class='form-control',
+                placeholder=g.search_form.q.label.text) }}
+            </div>
+        </form>
         {% endif %}
 
 
         <ul class="navbar-nav mt-2 mt-md-0 ">
             {% if current_user.is_anonymous %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.login') }}">.</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.login') }}">.</a>
+            </li>
             {% else %}
 
 
-                <li class="nav-item ">
-                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('jrnl.jrnl_new') }}"
-                       class="btn  ">
-                        <span class="fa fa-lg fa-pencil"></span>
-                    </a>
-                </li>
-
-
-                <li class="nav-item ">
-                    <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('auth.logout') }}"
-                       class="btn  ">
-                        <span class="fa fa-lg fa-sign-out"></span>
-                    </a>
-                </li>
+            <li class="nav-item ">
+                <a style="color: #a0a0a0" class="nav-link" href="{{ url_for('auth.logout') }}"
+                   class="btn  ">
+                    <span class="fa fa-lg fa-sign-out"></span>
+                </a>
+            </li>
             {% endif %}
 
         </ul>
@@ -119,19 +129,18 @@
 </div>
 <div>
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% endwith %}
 </div>
 
 {% block content %}
 {% endblock %}
-
 
 
 <!-- Optional JavaScript -->
@@ -141,9 +150,10 @@
 {% endblock %}
 
 <link rel="stylesheet"
-        {#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/obsidian.min.css">#}
-        {#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/github.min.css">#}
-{#      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/tomorrow-night.min.css">#}
+      {# href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/obsidian.min.css">
+#}
+{# href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/github.min.css">#}
+{# href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.0/build/styles/tomorrow-night.min.css">#}
 {#href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/atom-one-dark.min.css">#}
 href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/railscasts.min.css">
 

@@ -10,7 +10,7 @@ from markupsafe import Markup
 from app.main.forms import SearchForm
 
 from app.main import bp
-from app.models import Jrnl
+from app.models import Jrnl, Post
 
 
 @bp.before_app_request
@@ -49,6 +49,15 @@ def dash():
     jrnls = Jrnl.get_news_filter('#qc').limit(10)
 
     return render_template('dash.html', title='Dash', user=current_user, data=dr, jrnls=jrnls)
+
+
+@bp.route('/softdevel')
+def softdevel():
+
+    jrnls = Post.get_new_jrnls().limit(3)
+    posts = Post.get_new_posts().limit(3)
+
+    return render_template('softdevel.html', title='Sofware development', user=current_user, posts=posts, jrnls=jrnls)
 
 
 @bp.route('/search')
