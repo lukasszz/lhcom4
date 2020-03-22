@@ -11,20 +11,20 @@
     </a>
     {% endif %}
 
-    <div class="row mt-5">
+    <div class="py-5">
         {% for post in posts.items %}
-
-        <div style="" class="col m-2 container lh-col-card border-success">
-                <h2 style="">{{ post.title }}</h2>
-                <span class="font-italic" style="text-align: right">{{ moment(post.timestamp).fromNow() }}
-                    {% if not current_user.is_anonymous %}
-                    <a href="{{ url_for('post.post_ed', id=post.id) }}">.</a>
-                    {% endif %}
-                </span>
-            <p style="min-width: 150px;">{{ post.body | markdown }}</p>
-        </div>
-
+        <h3>{{ post.title }}</h3>
+        <p class="py-3">
+            {{ post.body[:300] | markdown }}
+            <a href="{{ url_for('post.view', id=post.id) }}"> Read full text
+                >>> </a>
+            {% if not current_user.is_anonymous %}
+            <a href="{{ url_for('post.post_ed', id=post.id) }}">(edit)</a>
+            {% endif %}
+        </p>
+        <div class="font-italic" style="text-align: right">{{ moment(post.timestamp).fromNow() }}</div>
         {% endfor %}
+
     </div>
 
     <div class="row text-center ">

@@ -2,6 +2,8 @@ from math import ceil
 
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required
+import markdown
+from markupsafe import Markup
 
 from app import db
 from app.post import bp
@@ -14,7 +16,7 @@ from app.models import Post
 def post_new():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, body=form.body.data, category = form.category.data)
+        post = Post(title=form.title.data, body=form.body.data, category=form.category.data)
         db.session.add(post)
         db.session.commit()
         flash('Added new Post entry!')
@@ -29,13 +31,25 @@ def post_ed(id):
     post = Post.query.get(id)
 
     if form.validate_on_submit():
-        post.body = form.post.data
+        post.body = form.body.data
+        post.category = form.category.data
+        post.title = form.title.data
         db.session.add(post)
         db.session.commit()
         flash('Sucessfuly edited Post id: ' + str(post.id))
         return redirect(url_for('post.post_list'))
-    form.post.data = post.body
+    form.title.data = post.title
+    form.category.data = post.category
+    form.body.data = post.body
     return render_template('post_ed.html', form=form)
+
+
+@bp.route('/view/<int:id>')
+def view(id):
+    post = Post.query.get(id)
+    body = Markup(markdown.markdown(post.body, extensions=['fenced_code', 'footnotes', 'toc']))
+
+    return render_template('post_view.html', title=post.title, body=body)
 
 
 @bp.route('/post_list')

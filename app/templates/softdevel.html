@@ -30,7 +30,7 @@
             <h3>{{ post.title }}</h3>
             <p class="py-3">
                 {{ post.body[:300] }}
-                <a href="{{ url_for('main.art_view', md_file='004_mgates') }}"> Read full text
+                <a href="{{ url_for('post.view', id=post.id) }}"> Read full text
                     >>> </a>
             </p>
             <div class="font-italic" style="text-align: right">{{ moment(post.timestamp).fromNow() }}</div>
