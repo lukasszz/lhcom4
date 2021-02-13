@@ -12,19 +12,15 @@
     {% endif %}
 
     <div class="py-5">
-        {% for post in posts.items %}
-        <h3>{{ post.title }}</h3>
-        <p class="py-3">
-            {{ post.body[:300] | markdown }}
-            <a href="{{ url_for('post.view', id=post.id) }}"> Read full text
-                >>> </a>
-            {% if not current_user.is_anonymous %}
-            <a href="{{ url_for('post.post_ed', id=post.id) }}">(edit)</a>
-            {% endif %}
-        </p>
-        <div class="font-italic" style="text-align: right">{{ moment(post.timestamp).fromNow() }}</div>
-        {% endfor %}
-
+        <ul>
+            {% for post in posts.items %}
+            <li style="display: flex;">
+                <span style='min-width: 100px;'>{{ moment(post.timestamp).format("DD MMM YY") }}</span>
+                <span><a href="{{ url_for('post.view', id=post.id, title=post.title) }}">{{ post.title }}</a>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div class="row text-center ">

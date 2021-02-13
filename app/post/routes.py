@@ -44,12 +44,12 @@ def post_ed(id):
     return render_template('post_ed.html', form=form)
 
 
-@bp.route('/view/<int:id>')
-def view(id):
+@bp.route('/view/<int:id>/<title>')
+def view(id, title):
     post = Post.query.get(id)
     body = Markup(markdown.markdown(post.body, extensions=['fenced_code', 'footnotes', 'toc']))
 
-    return render_template('post_view.html', title=post.title, body=body)
+    return render_template('post_view.html', title=post.title, body=body, post=post)
 
 
 @bp.route('/post_list')

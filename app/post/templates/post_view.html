@@ -3,7 +3,11 @@
 {% block content %}
 
 <div class="art container py-5">
-    <h1>{{ title }}</h1>
+    <h1>{{ post.title }}</h1>
+    {% if not current_user.is_anonymous %}
+    <a href="{{ url_for('post.post_ed', id=post.id) }}">(edit)</a>
+    {% endif %}
+
     {{ body }}
 </div>
 {% endblock %}

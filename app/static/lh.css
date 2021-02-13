@@ -3,6 +3,14 @@ body {
     color: #A9B7C6;
 }
 
+a {
+color: #82a495;
+text-decoration: underline;
+}
+
+a:hover {
+color: #9bb9ab;
+}
 h1 {
     color: #e0e5eb;
     border-bottom: 1px solid #101010;
