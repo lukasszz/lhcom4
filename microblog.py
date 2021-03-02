@@ -1,4 +1,4 @@
-from app import db, create_app
+from app import create_app
 from app.models import User, Jrnl
 from config import Config
 

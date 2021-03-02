@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_moment import Moment
-from mariadb import connect
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -38,10 +37,6 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     login.init_app(app)
     moment.init_app(app)
-
-    app.sphinxsearch = None
-    if app.config['SPHINXSEARCH_HOST'] is not None:
-        app.sphinxsearch = connect(host=app.config['SPHINXSEARCH_HOST'], port=9306)
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
