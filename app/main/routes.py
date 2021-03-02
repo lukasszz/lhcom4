@@ -62,16 +62,19 @@ def softdevel():
 
 @bp.route('/search')
 def search():
-    per_page = 15
     if not g.search_form.validate():
         return redirect(url_for('main.explore'))
+
+    query = g.search_form.q.data
+    per_page = 20
     page = request.args.get('page', 1, type=int)
-    jrnls, total = Jrnl.search(g.search_form.q.data, page,
-                               per_page)
+
+    jrnls, total = Jrnl.search(query, page, per_page)
 
     next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) \
         if total > page * per_page else None
     prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
         if page > 1 else None
+
     return render_template('search.html', title='Search', jrnls=jrnls,
                            next_url=next_url, prev_url=prev_url, page=page, total=ceil(total / per_page))

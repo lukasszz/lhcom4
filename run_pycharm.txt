@@ -1,0 +1,3 @@
+To run (and debug) in Pycharm, define the Enviorment varialbes in the Runinng configuration:
+
+PYTHONUNBUFFERED=1;FLASK_DEBUG=True;FLASK_APP=microblog.py

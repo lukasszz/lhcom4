@@ -1,28 +1,18 @@
 from flask import current_app
 
 
-def add_to_index(index, model):
-    if not current_app.elasticsearch:
-        return
-    payload = {}
-    for field in model.__searchable__:
-        payload[field] = getattr(model, field)
-    current_app.elasticsearch.index(index=index, doc_type=index, id=model.id,
-                                    body=payload)
-
-
-def remove_from_index(index, model):
-    if not current_app.elasticsearch:
-        return
-    current_app.elasticsearch.delete(index=index, doc_type=index, id=model.id)
-
-
 def query_index(index, query, page, per_page):
-    if not current_app.elasticsearch:
+    if not current_app.sphinxsearch:
         return [], 0
-    search = current_app.elasticsearch.search(
-        index=index, doc_type=index,
-        body={'query': {'multi_match': {'query': query, 'fields': ['body']}},
-              'from': (page - 1) * per_page, 'size': per_page})
-    ids = [int(hit['_id']) for hit in search['hits']['hits']]
-    return ids, search['hits']['total']
+
+    con = current_app.sphinxsearch
+    cur = con.cursor()
+    cur.execute("SELECT id FROM {} WHERE match('{}') LIMIT {},{};".format(index, query, (page - 1) * per_page, per_page))
+    ids = cur.fetchall()
+
+    cur.execute("SHOW meta")
+    meta = cur.fetchall()
+    # find row with 'total' and retrive it's value
+    total = int([item[1] for item in meta if item[0] == 'total'][0])
+
+    return ids, total

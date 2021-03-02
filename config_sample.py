@@ -10,6 +10,6 @@ class Config(object):
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    ELASTICSEARCH_URL = 'http://127.0.0.1:9200/'
+    SPHINXSEARCH_HOST = None
 
     IBM_BACKENDS_PICKLE = 'PATH/ibm_backends.pickle'
