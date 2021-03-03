@@ -16,4 +16,5 @@ def query_index(index, query, page, per_page):
     # find row with 'total' and retrive it's value
     total = int([item[1] for item in meta if item[0] == 'total'][0])
 
+    con.close()
     return ids, total
