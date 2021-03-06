@@ -5,16 +5,14 @@
 <div class="container py-5">
     <h1 class="mb-5">Articles</h1>
 
-
-    <div class="row mt-5">
-        <div class="col-4">
+    <div class="row">
+        <div class="col-md-4 text-right" style="">
             <a href="{{ url_for('main.art_view', md_file='004_mgates') }}">
                 <img src="{{ url_for('static', filename='art/004/mgates.png') }}"
                      class="figure-img img-fluid rounded" alt="">
             </a>
         </div>
-        <div class="col-8">
-
+        <div class="col-md-8">
             <h2>Constructing quantum gates as matrices for a multi-qubit quantum systems</h2>
 
             <span class="badge badge-primary">Quantum</span>
@@ -30,13 +28,13 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-4">
+        <div class="col-md-4">
             <a href="{{ url_for('main.art_view', md_file='003_grover') }}">
                 <img src="{{ url_for('static', filename='art/003/qc.png') }}"
                      class="figure-img img-fluid rounded" alt="">
             </a>
         </div>
-        <div class="col-8">
+        <div class="col-md-8">
 
             <h2>Grover algorithm explained with matrices calculus</h2>
 
@@ -54,14 +52,14 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-4">
+        <div class="col-md-4">
             <a href="https://github.com/Qiskit/qiskit-tutorials-community/blob/master/hello_world/bitstring_compression.ipynb"
                target="_blank">
                 <img src="{{ url_for('static', filename='art/002/encoding4.png') }}"
                      class="figure-img img-fluid rounded" alt="">
             </a>
         </div>
-        <div class="col-8">
+        <div class="col-md-8">
 
 
             <h2> Compressing bit strings in qubits using superposition effect </h2>
@@ -80,13 +78,13 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-4">
+        <div class="col-md-4">
             <a href="{{ url_for('main.art_view', md_file='001_wprowadzenie_do_budowy_qc') }}">
                 <img src="{{ url_for('static', filename='art/001/QC-stack-in3D-01.png') }}"
                      class="figure-img img-fluid rounded" alt="Quantum computer stack">
             </a>
         </div>
-        <div class="col-8">
+        <div class="col-md-8">
 
 
             <h2>Wprowadzenie do budowy komputerów kwantowych</h2>
