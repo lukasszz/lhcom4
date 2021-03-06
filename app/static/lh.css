@@ -1,6 +1,10 @@
 body {
     background-color: black;
-    color: #A9B7C6;
+    color: #ccc;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(250, 251, 274, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
 }
 
 a {
@@ -21,27 +25,39 @@ h2 {
 }
 
 .art {
-    padding-left: 7em;
-    padding-right: 7em;
-}
-
-.art p {
-    font-size: 1.3em;
+    /*font-family: Menlo,Meslo LG,monospace;*/
 }
 
 .art h1 {
+    font-size: 1.8em;
     border-bottom: 2px solid #303030;
+    margin-bottom: 1em;
+    1color: #17b06b !important;
+    color: #eee;
+}
+
+.art h2::before {
+    position: absolute;
+
+    left: -1rem;
+    color: #17b06b !important;
+    content: "#";
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .art h2 {
+    font-size: 1.2em;
     margin-top: 2em;
     border-bottom: 1px solid #202020;
+    position: relative;
+    color: #eee;
 }
 
 .art h3 {
-    margin-top: 1.5em;
-    font-size: 1.5em;
-    border-bottom: 1px solid #101010;
+    font-size: 1.1em;
+    position: relative;
+    color: #eee;
 }
 
 .figure-caption {
