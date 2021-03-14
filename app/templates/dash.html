@@ -12,9 +12,9 @@
         <div class="row">
             {% for b in data['backends'] %}
 
-            <div class="col-md-2 col-sm-2 col-xs-2">
+            <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-2">
                 <div class="info-box {{ 'bg-success' if b['operational'] else 'bg-dark'  }}">
-                    <span class="info-box-icon"><i class="fa fa-microchip"></i></span>
+                    <span class="info-box-icon">{{ b['qubits'] }}<i class="fa fa-microchip"></i></span>
 
                     <div class="info-box-content">
 
