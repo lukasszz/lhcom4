@@ -12,15 +12,15 @@
         <div class="row">
             {% for b in data['backends'] %}
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-2 col-sm-2 col-xs-2">
                 <div class="info-box {{ 'bg-success' if b['operational'] else 'bg-dark'  }}">
                     <span class="info-box-icon"><i class="fa fa-microchip"></i></span>
 
                     <div class="info-box-content">
 
-                        <span class="info-box-text">{{ b['name'] }}</span>
-                        <span class="info-box-number">{{ b['pending_jobs'] }}</span>
-                        <span class="description">Pending jobs</span>
+                        <span class="info-box-text"><b>{{ b['name'] }}</b></span>
+                        <span class="info-box-text"><b>{{ b['pending_jobs'] }}</b> pending jobs</span>
+
                     </div>
                     <!-- /.info-box-content -->
                 </div>
