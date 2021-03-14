@@ -1,0 +1,8 @@
+[Unit]
+Description=IBM Qiskit backend check
+
+[Service]
+Type=oneshot
+ExecStart=/home/lukasz/ibm_backends/venv/bin/python /home/lukasz/ibm_backends/backends.py
+
+
