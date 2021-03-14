@@ -5,4 +5,3 @@ Description=IBM Qiskit backend check
 Type=oneshot
 ExecStart=/home/lukasz/ibm_backends/venv/bin/python /home/lukasz/ibm_backends/backends.py
 
-
