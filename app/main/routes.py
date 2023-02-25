@@ -26,7 +26,7 @@ def index():
 
 @bp.route('/art/<md_file>')
 def art_view(md_file):
-    with open("app/art/" + md_file + ".md") as f:
+    with open(current_app.root_path + "/art/" + md_file + ".md") as f:
         text = f.read()
         content = Markup(markdown.markdown(text, extensions=['fenced_code', 'footnotes', 'toc']))
 
