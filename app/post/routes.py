@@ -55,7 +55,7 @@ def view(id, title):
 @bp.route('/post_list')
 def post_list():
     page = request.args.get('page', 1, type=int)
-    posts = Post.get_news().paginate(page, 9, False)
+    posts = Post.get_news().paginate(page=page, per_page=9)
     total_pages = ceil(posts.total / posts.per_page)
 
     return render_template('post_list.html', posts=posts, total_pages=total_pages)

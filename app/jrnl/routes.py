@@ -41,7 +41,7 @@ def jrnl_ed(id):
 @bp.route('/jrnl_list')
 def jrnl_list():
     page = request.args.get('page', 1, type=int)
-    jrnls = Jrnl.get_news().paginate(page, 9, False)
+    jrnls = Jrnl.get_news().paginate(page=page, per_page=9)
     total_pages = ceil(jrnls.total / jrnls.per_page)
 
     return render_template('jrnl_list.html', jrnls=jrnls, total_pages=total_pages)
