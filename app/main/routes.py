@@ -62,8 +62,9 @@ def softdevel():
 
 @bp.route('/search')
 def search():
-    if not g.search_form.validate():
-        return redirect(url_for('main.explore'))
+    # csrf filed error
+    #if not g.search_form.validate():
+    #    return redirect(url_for('main.explore'))
 
     query = g.search_form.q.data
     per_page = 20
