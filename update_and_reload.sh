@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git pull
-venv/bin/pip install -r requirements.txt
+venv/bin/pip install -r requirements.txt  | grep -v "Requirement already satisfied"
 venv/bin/flask db upgrade
 
 echo 'Stoping nginx...'
