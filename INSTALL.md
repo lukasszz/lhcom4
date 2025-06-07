@@ -26,11 +26,12 @@ Not the home page should start.
 #### Setup database
 Run postgres docker container `postgres-docker.sh`
 ```bash
-createuser -h localhost -U postgres lhcom4
-createdb -h localhost -U postgres -O lhcom4 lhcom4
-psql -h localhost  -U postgres template1
+createuser -h localhost -p 5435 -U postgres lhcom4
+createuser -h localhost -p 5435 -U postgres sphinx
+createdb -h localhost -p 5435 -U postgres -O lhcom4 lhcom4
+psql -h localhost -p 5435 -U postgres template1
 template1=# alter user lhcom4 password 'pass';
-psql -h localhost -U lhcom4 lhcom4 < lhcom4-2022-05-15.db
+psql -p 5435 -h localhost -U lhcom4 lhcom4 < lhcom4-2022-05-15.db
 ```
 Change the config.py:
 ```python

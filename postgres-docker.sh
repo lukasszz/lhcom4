@@ -1,1 +1,5 @@
-docker run --rm --name postgresql -e POSTRES_PASSWORD=pass -d -p 5432:5432 -v /Users/lukasz/docker_volumes/postgres:/var/lib/postgresql/data:z postgres 
+docker run --rm --name postgres-lhcom4 \
+  -e POSTGRES_PASSWORD=pass \
+  -v /Users/Shared/docker_volumes/postgres:/var/lib/postgresql/data \
+  -p 5435:5432 \
+  postgres

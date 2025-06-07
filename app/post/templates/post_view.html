@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/post.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
+<div class="post-container">
+    <h1 class="post-title">{{ post.title }}</h1>
+    
+    <div class="post-meta">
+        {{ moment(post.timestamp).format('MMMM D, YYYY') }}
+        {% if not current_user.is_anonymous %}
+        <a href="{{ url_for('post.post_ed', id=post.id) }}" class="edit-link">(edit)</a>
+        {% endif %}
+    </div>
 
-<div class="art container py-5">
-    <h1>{{ post.title }}</h1>
-    {% if not current_user.is_anonymous %}
-    <a href="{{ url_for('post.post_ed', id=post.id) }}">(edit)</a>
-    {% endif %}
-
-    {{ body }}
+    <div class="post-content">
+        {{ body }}
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,171 @@
+/* Post styling with dark theme */
+.post-container {
+    max-width: 740px !important;
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+    font-family: 'Source Serif Pro', Georgia, serif !important;
+    color: #e1e1e6 !important;
+    background-color: black !important;
+}
+
+.post-container * {
+    font-family: 'Source Serif Pro', Georgia, serif !important;
+}
+
+.post-title {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1.5rem !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #303030 !important;
+}
+
+.post-meta {
+    font-size: 1rem !important;
+    color: #a0a0a0 !important;
+    margin-bottom: 2rem !important;
+}
+
+.post-content {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Styling for different elements within the post */
+.post-content p {
+    margin-bottom: 1.5rem !important;
+    color: #ccc !important;
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+}
+
+.post-content h1 {
+    font-size: 2rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+    color: #eee !important;
+    border-bottom: 1px solid #303030 !important;
+}
+
+.post-content h2 {
+    font-size: 1.75rem !important;
+    margin-top: 2.2rem !important;
+    margin-bottom: 1.2rem !important;
+    color: #eee !important;
+    position: relative !important;
+}
+
+.post-content h2::before {
+    position: absolute !important;
+    left: -1rem !important;
+    color: #17b06b !important;
+    content: "#" !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+}
+
+.post-content h3 {
+    font-size: 1.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    color: #eee !important;
+}
+
+.post-content ul, 
+.post-content ol {
+    margin-bottom: 1.5rem !important;
+    padding-left: 2rem !important;
+    color: #ccc !important;
+    font-size: 1.25rem !important;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem !important;
+    line-height: 1.6 !important;
+}
+
+.post-content blockquote {
+    border-left: 4px solid #17b06b !important;
+    padding-left: 1.5rem !important;
+    margin: 2rem 0 !important;
+    font-style: italic !important;
+    color: #a0a0a0 !important;
+}
+
+/* Code blocks styling - using existing railscasts theme */
+.post-content pre {
+    background: #2b2b2b !important;
+    border-radius: 4px !important;
+    padding: 1rem !important;
+    margin: 1.5rem 0 !important;
+    overflow-x: auto !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    border: 1px solid #404040 !important;
+}
+
+.post-content code {
+    background: #2b2b2b !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+    font-family: Hack, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+    color: #e0e0e0 !important;
+}
+
+/* Images in posts */
+.post-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 2rem auto !important;
+    display: block !important;
+    border-radius: 4px !important;
+}
+
+/* Links styling */
+.post-content a {
+    color: #49a353 !important;
+    text-decoration: underline !important;
+    transition: color 0.2s ease !important;
+}
+
+.post-content a:hover {
+    color: #56d364 !important;
+}
+
+/* Edit link styling */
+.edit-link {
+    display: inline-block !important;
+    margin-left: 1rem !important;
+    font-size: 1rem !important;
+    color: #a0a0a0 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+.edit-link:hover {
+    color: #56d364 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-container {
+        padding: 20px 15px !important;
+    }
+    
+    .post-title {
+        font-size: 2rem !important;
+    }
+    
+    .post-content {
+        font-size: 1.1rem !important;
+    }
+    
+    .post-content p,
+    .post-content ul,
+    .post-content ol {
+        font-size: 1.1rem !important;
+    }
+} 
