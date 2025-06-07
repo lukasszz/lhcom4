@@ -11,6 +11,9 @@ class PostForm(FlaskForm):
         DataRequired(), Length(min=1)])
     category = SelectField(choices=[['quantum', 'Quantum'], ['softdevel', 'SoftDevel']])
     header_image = FileField('Header Image', validators=[
-        FileAllowed(['jpg', 'jpeg', 'png'], 'Images only!')
+        FileAllowed(['jpg', 'jpeg', 'png', 'webp'], 'Images only!')
     ])
+    content_images = FileField('Content Images', validators=[
+        FileAllowed(['jpg', 'jpeg', 'png', 'webp'], 'Images only!')
+    ], render_kw={'multiple': True})
     submit = SubmitField('Submit')

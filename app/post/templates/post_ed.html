@@ -21,7 +21,52 @@
                 {% endif %}
             </div>
             
+            <div class="form-group mt-3">
+                {{ form.content_images.label }}
+                {{ form.content_images(class="form-control", multiple=True) }}
+                <small class="form-text text-muted">
+                    Wybierz obrazki (JPG, PNG, WebP) - zostaną automatycznie przesłane i pojawią się poniżej z przyciskami do kopiowania.
+                </small>
+            </div>
+            
+            {% if post_images %}
+            <div class="form-group mt-4">
+                <h5>Załączone obrazki:</h5>
+                <div class="row">
+                    {% for image in post_images %}
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card">
+                            <img src="{{ image.url }}" alt="{{ image.filename }}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                            <div class="card-body p-2">
+                                <h6 class="card-title small">{{ image.filename }}</h6>
+                                <div class="btn-group-vertical d-grid gap-1">
+                                    <button type="button" class="btn btn-sm btn-outline-primary copy-btn" 
+                                            data-text="{{ image.markdown }}" 
+                                            title="Kopiuj Markdown">
+                                        📋 Markdown
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" 
+                                            data-text="{{ image.html }}" 
+                                            title="Kopiuj HTML">
+                                        📋 HTML
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger delete-img-btn" 
+                                            data-filename="{{ image.filename }}" 
+                                            title="Usuń obrazek">
+                                        🗑️ Usuń
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
             {{ form.body(cols=40, rows=30, class="form-control mt-3") }}
+            
+      
         </div>
 
         {% for field, error in form.errors.items() %}
@@ -34,4 +79,267 @@
 
 {% block js_scripts %}
 {{ pagedown.include_pagedown() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-copy markdown to clipboard when available
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        if (alert.textContent.includes('Copy this markdown:')) {
+            const markdownText = alert.textContent.split('Copy this markdown: ')[1];
+            if (markdownText) {
+                navigator.clipboard.writeText(markdownText).then(() => {
+                    console.log('Markdown copied to clipboard');
+                });
+            }
+        }
+    });
+    
+    // Handle copy buttons for existing images
+    function setupCopyButtons() {
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            // Remove existing event listeners to avoid duplicates
+            button.replaceWith(button.cloneNode(true));
+        });
+        
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const textToCopy = this.getAttribute('data-text');
+                const originalText = this.innerHTML;
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Show success feedback
+                    this.innerHTML = '✅ Skopiowano!';
+                    this.classList.remove('btn-outline-primary', 'btn-outline-secondary');
+                    this.classList.add('btn-success');
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.classList.remove('btn-success');
+                        if (originalText.includes('Markdown')) {
+                            this.classList.add('btn-outline-primary');
+                        } else {
+                            this.classList.add('btn-outline-secondary');
+                        }
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    this.innerHTML = '❌ Błąd';
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+        });
+    }
+    
+    // Handle delete buttons for images
+    function setupDeleteButtons() {
+        document.querySelectorAll('.delete-img-btn').forEach(button => {
+            // Remove existing event listeners to avoid duplicates
+            button.replaceWith(button.cloneNode(true));
+        });
+        
+        document.querySelectorAll('.delete-img-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filename = this.getAttribute('data-filename');
+                const originalText = this.innerHTML;
+                
+                // Show confirmation
+                if (!confirm(`Czy na pewno chcesz usunąć obrazek "${filename}"?`)) {
+                    return;
+                }
+                
+                // Get post ID from URL
+                const pathParts = window.location.pathname.split('/');
+                const postId = pathParts[pathParts.length - 1];
+                
+                if (!postId || isNaN(postId)) {
+                    alert('Błąd: Nie można określić ID posta.');
+                    return;
+                }
+                
+                // Show loading state
+                this.innerHTML = '⏳ Usuwanie...';
+                this.disabled = true;
+                
+                // Delete image
+                fetch(`/post/delete_image/${postId}/${filename}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Remove the entire image card
+                        const imageCard = this.closest('.col-md-6');
+                        imageCard.remove();
+                        
+                        // Show success message briefly
+                        const successDiv = document.createElement('div');
+                        successDiv.className = 'alert alert-success mt-2';
+                        successDiv.innerHTML = `✅ Obrazek "${filename}" został usunięty`;
+                        
+                        // Add to container
+                        const imagesContainer = document.querySelector('.form-group h5');
+                        if (imagesContainer) {
+                            imagesContainer.parentNode.insertBefore(successDiv, imagesContainer.nextSibling);
+                            
+                            // Remove success message after 3 seconds
+                            setTimeout(() => {
+                                successDiv.remove();
+                            }, 3000);
+                        }
+                    } else {
+                        alert('Błąd usuwania: ' + data.error);
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Delete error:', error);
+                    alert('Błąd usuwania: ' + error.message);
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                });
+            });
+        });
+    }
+    
+    // Setup copy buttons initially
+    setupCopyButtons();
+    setupDeleteButtons();
+    
+    // Auto-upload content images when selected
+    const contentImagesInput = document.querySelector('input[name="content_images"]');
+    if (contentImagesInput) {
+        contentImagesInput.addEventListener('change', function() {
+            const files = this.files;
+            if (files.length === 0) return;
+            
+            // Get post ID from URL or form
+            const pathParts = window.location.pathname.split('/');
+            const postId = pathParts[pathParts.length - 1];
+            
+            if (!postId || isNaN(postId)) {
+                alert('Błąd: Nie można określić ID posta. Zapisz wpis najpierw.');
+                return;
+            }
+            
+            // Create FormData
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                formData.append('content_images', files[i]);
+            }
+            
+            // Show loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'alert alert-info mt-2';
+            loadingDiv.innerHTML = '⏳ Uploading images...';
+            contentImagesInput.parentNode.appendChild(loadingDiv);
+            
+            // Upload images
+            fetch(`/post/upload_content_images/${postId}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove loading indicator
+                loadingDiv.remove();
+                
+                if (data.success) {
+                    // Add new images to the list
+                    addImagesToList(data.images);
+                    
+                    // Clear the input
+                    contentImagesInput.value = '';
+                    
+                    // Show success message
+                    const successDiv = document.createElement('div');
+                    successDiv.className = 'alert alert-success mt-2';
+                    successDiv.innerHTML = `✅ Uploaded ${data.count} image(s) successfully!`;
+                    contentImagesInput.parentNode.appendChild(successDiv);
+                    
+                    // Remove success message after 3 seconds
+                    setTimeout(() => {
+                        successDiv.remove();
+                    }, 3000);
+                } else {
+                    alert('Błąd uploadu: ' + data.error);
+                }
+            })
+            .catch(error => {
+                // Remove loading indicator
+                loadingDiv.remove();
+                console.error('Upload error:', error);
+                alert('Błąd uploadu: ' + error.message);
+            });
+        });
+    }
+    
+    // Function to add images to the list
+    function addImagesToList(images) {
+        let imagesContainer = document.querySelector('.form-group .row');
+        let imagesSection = document.querySelector('.form-group h5');
+        
+        // If images section doesn't exist, create it
+        if (!imagesSection) {
+            const formGroup = document.createElement('div');
+            formGroup.className = 'form-group mt-4';
+            formGroup.innerHTML = '<h5>Załączone obrazki:</h5><div class="row"></div>';
+            
+            // Insert before the body textarea
+            const bodyTextarea = document.querySelector('textarea[name="body"]');
+            bodyTextarea.parentNode.insertBefore(formGroup, bodyTextarea);
+            
+            imagesContainer = formGroup.querySelector('.row');
+        }
+        
+        // Add each image to the container
+        images.forEach(image => {
+            const imageCard = document.createElement('div');
+            imageCard.className = 'col-md-6 col-lg-4 mb-3';
+            imageCard.innerHTML = `
+                <div class="card">
+                    <img src="${image.url}" alt="${image.filename}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                    <div class="card-body p-2">
+                        <h6 class="card-title small">${image.filename}</h6>
+                        <div class="btn-group-vertical d-grid gap-1">
+                            <button type="button" class="btn btn-sm btn-outline-primary copy-btn" 
+                                    data-text="${image.markdown.replace(/"/g, '&quot;')}" 
+                                    title="Kopiuj Markdown">
+                                📋 Markdown
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary copy-btn" 
+                                    data-text="${image.html.replace(/"/g, '&quot;')}" 
+                                    title="Kopiuj HTML">
+                                📋 HTML
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-danger delete-img-btn" 
+                                    data-filename="${image.filename}" 
+                                    title="Usuń obrazek">
+                                🗑️ Usuń
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            imagesContainer.appendChild(imageCard);
+            
+            // Set data attributes properly to avoid HTML escaping issues
+            const buttons = imageCard.querySelectorAll('.copy-btn');
+            buttons[0].setAttribute('data-text', image.markdown);
+            buttons[1].setAttribute('data-text', image.html);
+            
+            // Set delete button filename attribute
+            const deleteBtn = imageCard.querySelector('.delete-img-btn');
+            deleteBtn.setAttribute('data-filename', image.filename);
+        });
+        
+        // Setup copy buttons for new images
+        setupCopyButtons();
+        setupDeleteButtons();
+    }
+});
+</script>
 {% endblock %}
