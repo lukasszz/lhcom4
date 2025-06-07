@@ -1,0 +1,36 @@
+/* Home page styling with dark theme */
+.display-2 {
+    font-family: 'Source Serif Pro', Georgia, serif !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+.text-mono {
+    font-family: 'Source Serif Pro', Georgia, serif !important;
+    color: #e1e1e6 !important;
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+}
+
+.text-spacey {
+    font-family: 'Source Serif Pro', Georgia, serif !important;
+    color: #ccc !important;
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.vim-caret {
+    color: #17b06b !important;
+}
+
+/* Social links */
+.fa {
+    color: #a0a0a0 !important;
+    transition: color 0.2s ease !important;
+}
+
+.fa:hover {
+    color: #56d364 !important;
+    text-decoration: none !important;
+} 

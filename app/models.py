@@ -92,6 +92,19 @@ class Post(SearchableMixin, db.Model):
     def slug(self):
         return slugify(self.title)
 
+    @property
+    def excerpt(self):
+        """Generate a short excerpt from the post body for preview."""
+        import re
+        # Remove markdown syntax and get plain text
+        text = re.sub(r'[#*`_\[\]()]', '', self.body)
+        # Remove extra whitespace
+        text = ' '.join(text.split())
+        # Truncate to about 150 characters
+        if len(text) > 150:
+            text = text[:150].rsplit(' ', 1)[0] + '...'
+        return text
+
     @staticmethod
     def get_news():
         return Post.query.order_by(Post.id.desc())
