@@ -19,12 +19,29 @@
     margin-bottom: 1.5rem !important;
     color: #ffffff !important;
     border-bottom: 1px solid #303030 !important;
+    padding-bottom: 1rem !important;
 }
 
 .post-meta {
     font-size: 1rem !important;
     color: #a0a0a0 !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 2.5rem !important;
+    padding-bottom: 1.5rem !important;
+    border-bottom: 1px solid #1a1a1a !important;
+}
+
+.post-header-image {
+    margin: 0 0 3rem 0 !important;
+    text-align: center !important;
+}
+
+.post-header-image img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 500px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .post-content {

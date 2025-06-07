@@ -2,23 +2,36 @@
 
 {% block content %}
 <div class="container py-5">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             {{ form.hidden_tag() }}
             {{ form.title(class="form-control") }}
             {{ form.category(class='form-control') }}
-            {{ form.body(cols=40, rows=30, class="form-control") }}
+            
+            <div class="form-group mt-3">
+                {{ form.header_image.label }}
+                {{ form.header_image(class="form-control") }}
+                {% if post and post.header_image %}
+                    <div class="mt-2">
+                        <p>Current header image:</p>
+                        <img src="{{ url_for('static', filename=post.header_image) }}" 
+                             alt="Current header image" 
+                             style="max-width: 300px; height: auto;">
+                    </div>
+                {% endif %}
+            </div>
+            
+            {{ form.body(cols=40, rows=30, class="form-control mt-3") }}
         </div>
 
         {% for field, error in form.errors.items() %}
             <span style="color: red;">{{ field }} {{ error }}</span>
         {% endfor %}
-        {{ form.submit(class='form-control btn btn-success') }}
+        {{ form.submit(class='form-control btn btn-success mt-3') }}
     </form>
+</div>
+{% endblock %}
 
-    {% endblock %}
-
-
-    {% block js_scripts %}
-    {{ pagedown.include_pagedown() }}
-    {% endblock %}
+{% block js_scripts %}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

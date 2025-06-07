@@ -82,6 +82,7 @@ class Post(SearchableMixin, db.Model):
     title = db.Column(db.String(100))
     body = db.Column(db.String())
     category = db.Column(db.String(20))
+    header_image = db.Column(db.String(200))  # URL or path to the header image
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):

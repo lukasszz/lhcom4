@@ -6,3 +6,6 @@ config.py
 .idea
 tests/ibm_backends.pickle
 
+# Uploaded post images
+app/static/post/
+

@@ -17,6 +17,14 @@
         {% endif %}
     </div>
 
+    {% if post.header_image %}
+    <div class="post-header-image">
+        <img src="{{ url_for('static', filename=post.header_image) }}" 
+             alt="{{ post.title }}"
+             class="img-fluid">
+    </div>
+    {% endif %}
+
     <div class="post-content">
         {{ body }}
     </div>
