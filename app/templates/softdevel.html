@@ -9,7 +9,7 @@
         {% for post in posts %}
         <li style="display: flex;">
             <span style='min-width: 100px;'>{{ moment(post.timestamp).format("DD MMM YY") }}</span>
-            <span><a href="{{ url_for('post.view', id=post.id, title=post.title) }}">{{ post.title }}</a>
+            <span><a href="{{ url_for('post.view', id=post.id, slug=post.slug) }}">{{ post.title }}</a>
                 </span>
         </li>
         {% endfor %}

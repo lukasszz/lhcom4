@@ -4,6 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
 from app.search import query_index
+from hashlib import md5
+import re
 
 
 class SearchableMixin(object):
@@ -60,6 +62,19 @@ class Jrnl(SearchableMixin, db.Model):
         return Jrnl.query.filter(Jrnl.body.contains(like)).order_by(Jrnl.id.desc())
 
 
+def slugify(text):
+    # Convert to lowercase and replace spaces with hyphens
+    text = text.lower()
+    # Replace Polish characters
+    text = text.replace('ą', 'a').replace('ę', 'e').replace('ś', 's')
+    text = text.replace('ć', 'c').replace('ó', 'o').replace('ł', 'l')
+    text = text.replace('ż', 'z').replace('ź', 'z').replace('ń', 'n')
+    # Remove special characters and replace spaces with hyphens
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[-\s]+', '-', text)
+    return text.strip('-')
+
+
 class Post(SearchableMixin, db.Model):
     __searchable__ = ['body']
 
@@ -71,6 +86,10 @@ class Post(SearchableMixin, db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.title)
+
+    @property
+    def slug(self):
+        return slugify(self.title)
 
     @staticmethod
     def get_news():

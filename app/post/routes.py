@@ -44,11 +44,13 @@ def post_ed(id):
     return render_template('post_ed.html', form=form)
 
 
-@bp.route('/view/<int:id>/<title>')
-def view(id, title):
-    post = Post.query.get(id)
+@bp.route('/view/<int:id>')
+@bp.route('/view/<int:id>/<string:slug>')
+def view(id, slug=None):
+    post = Post.query.get_or_404(id)
+    if slug and post.slug != slug:
+        return redirect(url_for('post.view', id=id, slug=post.slug))
     body = Markup(markdown.markdown(post.body, extensions=['fenced_code', 'footnotes', 'toc']))
-
     return render_template('post_view.html', title=post.title, body=body, post=post)
 
 
