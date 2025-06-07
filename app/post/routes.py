@@ -44,12 +44,15 @@ def post_ed(id):
     return render_template('post_ed.html', form=form)
 
 
+@bp.route('/<int:id>', endpoint='default')
+@bp.route('/<int:id>/<string:slug>', endpoint='default_with_slug')
 @bp.route('/view/<int:id>')
 @bp.route('/view/<int:id>/<string:slug>')
 def view(id, slug=None):
     post = Post.query.get_or_404(id)
-    if slug and post.slug != slug:
-        return redirect(url_for('post.view', id=id, slug=post.slug))
+    # If no slug provided or incorrect slug, redirect to the canonical URL
+    if not slug or slug != post.slug:
+        return redirect(url_for('post.default_with_slug', id=id, slug=post.slug))
     body = Markup(markdown.markdown(post.body, extensions=['fenced_code', 'footnotes', 'toc']))
     return render_template('post_view.html', title=post.title, body=body, post=post)
 
