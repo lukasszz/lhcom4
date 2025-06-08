@@ -147,7 +147,7 @@ def post_ed(id):
         db.session.add(post)
         db.session.commit()
         flash('Successfully edited Post id: ' + str(post.id))
-        return redirect(url_for('post.post_list'))
+        return redirect(url_for('post.default_with_slug', id=post.id, slug=post.slug))
         
     form.title.data = post.title
     form.abstract.data = post.abstract
