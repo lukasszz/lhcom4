@@ -9,6 +9,14 @@
             {{ form.category(class='form-control') }}
             
             <div class="form-group mt-3">
+                {{ form.timestamp.label }}
+                {{ form.timestamp(class="form-control") }}
+                <small class="form-text text-muted">
+                    Leave empty for new posts to use current time. Format: YYYY-MM-DD HH:MM
+                </small>
+            </div>
+            
+            <div class="form-group mt-3">
                 {{ form.header_image.label }}
                 {{ form.header_image(class="form-control") }}
                 {% if post and post.header_image %}

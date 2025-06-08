@@ -86,6 +86,11 @@ def post_new():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(title=form.title.data, body=form.body.data, category=form.category.data)
+        
+        # Set timestamp if provided, otherwise use default
+        if form.timestamp.data:
+            post.timestamp = form.timestamp.data
+            
         db.session.add(post)
         db.session.commit()  # Commit to get the post ID
         
@@ -117,6 +122,10 @@ def post_ed(id):
         post.category = form.category.data
         post.title = form.title.data
         
+        # Update timestamp if provided
+        if form.timestamp.data:
+            post.timestamp = form.timestamp.data
+        
         # Handle header image
         if form.header_image.data:
             # Remove old image if it exists
@@ -142,6 +151,7 @@ def post_ed(id):
     form.title.data = post.title
     form.category.data = post.category
     form.body.data = post.body
+    form.timestamp.data = post.timestamp
     
     # Get list of images for this post
     post_images = get_post_images(post.id)
