@@ -85,7 +85,7 @@ def get_post_images(post_id):
 def post_new():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, body=form.body.data, category=form.category.data)
+        post = Post(title=form.title.data, abstract=form.abstract.data, body=form.body.data, category=form.category.data)
         
         # Set timestamp if provided, otherwise use default
         if form.timestamp.data:
@@ -121,6 +121,7 @@ def post_ed(id):
         post.body = form.body.data
         post.category = form.category.data
         post.title = form.title.data
+        post.abstract = form.abstract.data
         
         # Update timestamp if provided
         if form.timestamp.data:
@@ -149,6 +150,7 @@ def post_ed(id):
         return redirect(url_for('post.post_list'))
         
     form.title.data = post.title
+    form.abstract.data = post.abstract
     form.category.data = post.category
     form.body.data = post.body
     form.timestamp.data = post.timestamp

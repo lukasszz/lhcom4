@@ -6,6 +6,15 @@
         <div class="form-group">
             {{ form.hidden_tag() }}
             {{ form.title(class="form-control") }}
+            
+            <div class="form-group mt-3">
+                {{ form.abstract.label }}
+                {{ form.abstract(class="form-control") }}
+                <small class="form-text text-muted">
+                    Optional brief description that will be shown in the post list (max 500 characters)
+                </small>
+            </div>
+            
             {{ form.category(class='form-control') }}
             
             <div class="form-group mt-3">

@@ -93,7 +93,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     order: 2;
-    height: 200px;
 }
 
 .post-title {
@@ -145,7 +144,6 @@
     color: #aaa;
     margin-bottom: 0;
     font-style: italic;
-    flex-grow: 1;
 }
 
 .post-meta {

@@ -80,6 +80,7 @@ class Post(SearchableMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
+    abstract = db.Column(db.String(500))  # Abstract/description field
     body = db.Column(db.String())
     category = db.Column(db.String(20))
     header_image = db.Column(db.String(200))  # URL or path to the header image
@@ -94,7 +95,11 @@ class Post(SearchableMixin, db.Model):
 
     @property
     def excerpt(self):
-        """Generate a short excerpt from the post body for preview."""
+        """Return abstract if available, otherwise generate a short excerpt from the post body."""
+        if self.abstract and self.abstract.strip():
+            return self.abstract
+        
+        # Fallback to generating excerpt from body
         import re
         # Remove markdown syntax and get plain text
         text = re.sub(r'[#*`_\[\]()]', '', self.body)
