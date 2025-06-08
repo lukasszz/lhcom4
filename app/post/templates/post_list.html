@@ -3,79 +3,78 @@
 {% block styles %}
 {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/post_list.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="post-list-container">
     <div class="post-list-header">
-        <h1 class="post-list-title">Latest Posts</h1>
+        <h1 class="post-list-title">Posts</h1>
     </div>
 
     <div class="post-list">
         {% for post in posts.items %}
         <article class="post-item">
-            <div class="post-content">
-                <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" 
-                   class="post-title">{{ post.title }}</a>
+            <div class="post-content-wrapper">
+                {% if post.header_image %}
+                <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image">
+                    <img src="{{ url_for('static', filename=post.header_image) }}" 
+                         alt="{{ post.title }}">
+                </a>
+                {% else %}
+                <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image-placeholder">
+                    📄
+                </a>
+                {% endif %}
                 
-                <div class="post-excerpt">{{ post.excerpt }}</div>
-                
-                <div class="post-meta">
-                    <span class="post-date">{{ moment(post.timestamp).format('MMM D, YYYY') }}</span>
-                    <span class="post-category">{{ post.category }}</span>
+                <div class="post-content">
+                    <h2>
+                        <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" 
+                           class="post-title">{{ post.title }}</a>
+                    </h2>
+                    
+                    <div class="post-meta-row">
+                        <div class="post-meta">{{ moment(post.timestamp).format('MMMM D, YYYY') }}</div>
+                        <div class="post-category {{ post.category }}">{{ post.category }}</div>
+                    </div>
+                    
+                    <div class="post-excerpt">{{ post.excerpt }}</div>
                 </div>
             </div>
-            
-            {% if post.header_image %}
-            <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image">
-                <img src="{{ url_for('static', filename=post.header_image) }}" 
-                     alt="{{ post.title }}">
-            </a>
-            {% else %}
-            <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image-placeholder">
-                <i class="fa fa-file-text-o"></i>
-            </a>
-            {% endif %}
         </article>
         {% endfor %}
     </div>
 
     <!-- Pagination -->
+    {% if posts.pages > 1 %}
     <div class="pagination-container">
-        <nav aria-label="Posts pagination">
-            <ul class="pagination">
-                {% if posts.has_prev %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('post.post_list', page=posts.prev_num) }}">Previous</a>
-                </li>
+        <div class="pagination">
+            {% if posts.has_prev %}
+                <a href="{{ url_for('post.post_list', page=posts.prev_num) }}">&laquo; Previous</a>
+            {% endif %}
+            
+            {% for page_num in posts.iter_pages() %}
+                {% if page_num %}
+                    {% if page_num != posts.page %}
+                        <a href="{{ url_for('post.post_list', page=page_num) }}">{{ page_num }}</a>
+                    {% else %}
+                        <span class="current">{{ page_num }}</span>
+                    {% endif %}
                 {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
+                    <span>...</span>
                 {% endif %}
-
-                <li class="page-item active">
-                    <span class="page-link">{{ posts.page }} of {{ total_pages }}</span>
-                </li>
-
-                {% if posts.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="{{ url_for('post.post_list', page=posts.next_num) }}">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link">Next</span>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
+            {% endfor %}
+            
+            {% if posts.has_next %}
+                <a href="{{ url_for('post.post_list', page=posts.next_num) }}">Next &raquo;</a>
+            {% endif %}
+        </div>
     </div>
+    {% endif %}
 
-    <!-- Floating new post button -->
+    <!-- Floating Action Button for New Post -->
     {% if not current_user.is_anonymous %}
-    <a href="{{ url_for('post.post_new') }}" class="new-post-btn" title="Create new post">
-        <i class="fa fa-plus"></i>
+    <a href="{{ url_for('post.post_new') }}" class="fab-new-post" title="Write new post">
+        +
     </a>
     {% endif %}
 </div>
