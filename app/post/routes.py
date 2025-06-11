@@ -74,7 +74,7 @@ def get_post_images(post_id):
                 'filename': filename,
                 'url': relative_path,
                 'markdown': f'![Image description]({relative_path})',
-                'html': f'<img src="{relative_path}" alt="Image description" style="max-width: 100%; height: auto;">'
+                'html': f'<figure>\n  <img src="{relative_path}" alt="Opis obrazu" />\n  <figcaption>Rys 0. Krótki podpis pod ilustracją</figcaption>\n</figure>'
             })
     
     return images
@@ -254,7 +254,7 @@ def upload_content_images(post_id):
         # Generate URLs and syntax
         relative_path = url_for('static', filename=f'post/{post_id}/{filename}')
         markdown_syntax = f'![Image description]({relative_path})'
-        html_syntax = f'<img src="{relative_path}" alt="Image description" style="max-width: 100%; height: auto;">'
+        html_syntax = f'<figure>\n  <img src="{relative_path}" alt="Opis obrazu" />\n  <figcaption>Rys 0.Krótki podpis pod ilustracją</figcaption>\n</figure>'
         
         uploaded_images.append({
             'filename': filename,

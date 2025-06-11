@@ -141,6 +141,29 @@
     border-radius: 4px !important;
 }
 
+/* Figure and figcaption styling */
+.post-content figure {
+    margin: 2rem 0 !important;
+    text-align: center !important;
+}
+
+.post-content figure img {
+    margin: 0 auto !important;
+    display: block !important;
+    border-radius: 4px !important;
+}
+
+.post-content figcaption {
+    font-size: 0.9rem !important;
+    color: #a0a0a0 !important;
+    margin-top: 0.75rem !important;
+    font-style: italic !important;
+    line-height: 1.4 !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 /* Links styling */
 .post-content a {
     color: #49a353 !important;
