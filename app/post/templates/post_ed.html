@@ -478,6 +478,81 @@ document.addEventListener('DOMContentLoaded', function() {
         setupCopyButtons();
         setupDeleteButtons();
     }
+    
+    // Function to generate figures summary like in scientific publications
+    function generateFiguresSummary() {
+        if (!bodyTextarea) return;
+        
+        const postContent = bodyTextarea.value;
+        
+        // Parse HTML content to find figures
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = postContent;
+        
+        const figures = tempDiv.querySelectorAll('figure');
+        
+        if (figures.length === 0) {
+            alert('Nie znaleziono żadnych rysunków w treści posta.');
+            return;
+        }
+        
+        // Collect figure captions
+        const figureCaptions = [];
+        figures.forEach((figure, index) => {
+            const figcaption = figure.querySelector('figcaption');
+               if (figcaption) {
+                 const captionText = figcaption.textContent.trim();
+                 figureCaptions.push(`${captionText}`);
+             }
+        });
+        
+        // Create figures summary section as bulleted list
+        const summarySection = `\n\n## Spis ilustracji\n\n${figureCaptions.map(caption => `- ${caption}`).join('\n')}\n`;
+        
+        // Check if summary already exists and remove it
+        let currentContent = bodyTextarea.value;
+        const summaryRegex = /\n\n## Rysunki\n\n[\s\S]*$/;
+        if (summaryRegex.test(currentContent)) {
+            currentContent = currentContent.replace(summaryRegex, '');
+        }
+        
+        // Append new summary
+        bodyTextarea.value = currentContent + summarySection;
+        
+        // Update word count
+        updateWordCount();
+        
+        // Show success message
+        alert(`Dodano listę ${figures.length} rysunków na końcu posta!`);
+    }
+    
+    // Add button to generate figures summary
+    function addFiguresSummaryButton() {
+        if (!bodyTextarea) return;
+        
+        // Create button
+        const summaryButton = document.createElement('button');
+        summaryButton.type = 'button';
+        summaryButton.className = 'btn btn-info btn-sm ms-2';
+        summaryButton.innerHTML = '📊 Generuj Listę Rysunków';
+        summaryButton.title = 'Automatycznie generuje listę wszystkich rysunków na końcu posta';
+        summaryButton.addEventListener('click', generateFiguresSummary);
+        
+        // Find the submit button and add our button next to it
+        const submitButton = document.querySelector('input[type="submit"]');
+        if (submitButton) {
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'd-flex gap-2 align-items-center';
+            
+            // Wrap the submit button
+            submitButton.parentNode.insertBefore(buttonContainer, submitButton);
+            buttonContainer.appendChild(submitButton);
+            buttonContainer.appendChild(summaryButton);
+        }
+    }
+    
+    // Initialize figures summary button
+    addFiguresSummaryButton();
 });
 </script>
 {% endblock %}
