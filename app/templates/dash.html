@@ -7,6 +7,50 @@
 <div class="container py-5">
     <h1 class="mb-5">Quantum</h1>
 
+    <!-- Latest Posts Section -->
+    {% if latest_posts %}
+    <div class="py-5">
+        <h2>Latest Posts</h2>
+        <div class="row">
+            {% for post in latest_posts %}
+            <div class="col-md-4 mb-4">
+                <article class="post-item-horizontal">
+                    <div class="post-content-wrapper-horizontal">
+                        {% if post.header_image %}
+                        <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image-horizontal">
+                            <img src="{{ url_for('static', filename=post.header_image) }}" 
+                                 alt="{{ post.title }}">
+                        </a>
+                        {% else %}
+                        <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" class="post-image-placeholder-horizontal">
+                            📄
+                        </a>
+                        {% endif %}
+                        
+                        <div class="post-content-horizontal">
+                            <h3>
+                                <a href="{{ url_for('post.default_with_slug', id=post.id, slug=post.slug) }}" 
+                                   class="post-title-horizontal">{{ post.title }}</a>
+                            </h3>
+                            
+                            <div class="post-meta-row-horizontal">
+                                <div class="post-meta-horizontal">{{ moment(post.timestamp).format('MMMM D, YYYY') }}</div>
+                                <div class="post-category-horizontal {{ post.category }}">{{ post.category }}</div>
+                            </div>
+                            
+                            <div class="post-excerpt-horizontal">{{ post.excerpt[:100] }}{% if post.excerpt|length > 100 %}...{% endif %}</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('post.post_list') }}" class="view-all-posts">View all posts >>></a>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="py-5">
         <h2>IBM Q Backend</h2>
         <p><a href="https://quantumexperience.ng.bluemix.net/">IBM Quantum</a> backends status checked <i>{{

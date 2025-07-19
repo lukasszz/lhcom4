@@ -48,8 +48,11 @@ def dash():
         dr = {'tms': None, 'backends': []}
 
     jrnls = Jrnl.get_news_filter('#qc').limit(10)
+    
+    # Get latest posts for the dashboard panel (only quantum category)
+    latest_posts = Post.query.filter_by(category='quantum').order_by(Post.timestamp.desc()).limit(3).all()
 
-    return render_template('dash.html', title='Dash', user=current_user, data=dr, jrnls=jrnls)
+    return render_template('dash.html', title='Dash', user=current_user, data=dr, jrnls=jrnls, latest_posts=latest_posts)
 
 
 @bp.route('/softdevel')
