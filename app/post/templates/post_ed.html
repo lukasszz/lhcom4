@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+{% if post %}Edit: {{ post.title }}{% else %}New Post{% endif %} - SSZZ
+{% endblock %}
+
 {% block content %}
 <div class="container py-5">
     <form action="" method="post" enctype="multipart/form-data" id="postForm">
