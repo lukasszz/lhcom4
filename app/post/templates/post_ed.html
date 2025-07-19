@@ -19,9 +19,14 @@
             
             <div class="form-group mt-3">
                 {{ form.timestamp.label }}
-                {{ form.timestamp(class="form-control") }}
+                <div class="input-group">
+                    {{ form.timestamp(class="form-control", placeholder="YYYY-MM-DD HH:MM") }}
+                    <button type="button" class="btn btn-outline-secondary" id="updateTimestampBtn" title="Ustaw aktualny czas">
+                        ⏰
+                    </button>
+                </div>
                 <small class="form-text text-muted">
-                    Leave empty for new posts to use current time. Format: YYYY-MM-DD HH:MM
+                    ⏰ Automatycznie wypełniane aktualną datą i czasem dla nowych postów. Format: YYYY-MM-DD HH:MM
                 </small>
             </div>
             
@@ -182,6 +187,49 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Function to format current timestamp
+    function getCurrentTimestamp() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+    }
+    
+    // Auto-fill timestamp for new posts
+    const timestampField = document.querySelector('input[name="timestamp"]');
+    if (timestampField && !timestampField.value) {
+        const currentTimestamp = getCurrentTimestamp();
+        timestampField.value = currentTimestamp;
+        console.log('Auto-filled timestamp:', currentTimestamp);
+    }
+    
+    // Handle timestamp update button
+    const updateTimestampBtn = document.getElementById('updateTimestampBtn');
+    if (updateTimestampBtn && timestampField) {
+        updateTimestampBtn.addEventListener('click', function() {
+            const currentTimestamp = getCurrentTimestamp();
+            timestampField.value = currentTimestamp;
+            
+            // Show feedback
+            const originalText = this.innerHTML;
+            this.innerHTML = '✅';
+            this.classList.remove('btn-outline-secondary');
+            this.classList.add('btn-success');
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.classList.remove('btn-success');
+                this.classList.add('btn-outline-secondary');
+            }, 1000);
+            
+            console.log('Updated timestamp to:', currentTimestamp);
+        });
+    }
+    
     // Auto-copy markdown to clipboard when available
     const alerts = document.querySelectorAll('.alert');
     alerts.forEach(alert => {
