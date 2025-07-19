@@ -59,9 +59,11 @@ def dash():
 def softdevel():
 
     jrnls = Post.get_new_jrnls().limit(3)
-    posts = Post.get_new_posts().limit(3)
+    
+    # Get latest posts for the dashboard panel (only softdevel category)
+    latest_posts = Post.query.filter_by(category='softdevel').order_by(Post.timestamp.desc()).limit(3).all()
 
-    return render_template('softdevel.html', title='Sofware development', user=current_user, posts=posts, jrnls=jrnls)
+    return render_template('softdevel.html', title='Sofware development', user=current_user, jrnls=jrnls, latest_posts=latest_posts)
 
 
 @bp.route('/search')
