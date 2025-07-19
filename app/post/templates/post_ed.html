@@ -92,12 +92,18 @@
         {{ form.submit(class='form-control btn btn-success mt-3') }}
     </form>
     
-    <!-- Floating Submit Button with Word Counter -->
+    <!-- Floating Submit Buttons with Word Counter -->
     <div class="floating-submit-container">
         <div class="word-counter" id="wordCounter">0 słów</div>
+        
         {% if post %}
-        <button type="button" class="floating-submit-btn" id="floatingSubmit" title="Zapisz zmiany">
+        <!-- AJAX Save button -->
+        <button type="button" class="floating-ajax-btn" id="floatingAjaxSave" title="Zapisz bez przekierowania">
             💾
+        </button>
+        <!-- Regular Submit button -->
+        <button type="button" class="floating-submit-btn" id="floatingSubmit" title="Zapisz i przekieruj">
+            ✅
         </button>
         {% else %}
         <button type="button" class="floating-submit-btn" id="floatingSubmit" title="Utwórz post">
@@ -131,11 +137,10 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.floating-submit-btn {
+.floating-submit-btn, .floating-ajax-btn {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #28a745;
     color: white;
     border: none;
     font-size: 24px;
@@ -147,13 +152,27 @@
     justify-content: center;
 }
 
+.floating-submit-btn {
+    background-color: #28a745;
+}
+
+.floating-ajax-btn {
+    background-color: #007bff;
+}
+
 .floating-submit-btn:hover {
     background-color: #218838;
     transform: scale(1.1);
     box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
 
-.floating-submit-btn:active {
+.floating-ajax-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.floating-submit-btn:active, .floating-ajax-btn:active {
     transform: scale(0.95);
 }
 </style>
@@ -325,6 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle floating submit button
     const floatingSubmit = document.getElementById('floatingSubmit');
+    const floatingAjaxSave = document.getElementById('floatingAjaxSave');
     const postForm = document.getElementById('postForm');
     
     if (floatingSubmit && postForm) {
@@ -344,6 +364,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     postForm.submit();
                 }
             }
+        });
+    }
+    
+    // Handle floating AJAX save button
+    if (floatingAjaxSave && postForm) {
+        floatingAjaxSave.addEventListener('click', function() {
+            console.log('Floating AJAX save clicked...');
+            savePostAjax();
         });
     }
     
@@ -532,12 +560,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!form) return;
         
         const formData = new FormData(form);
-        const button = event.target;
-        const originalText = button.innerHTML;
+        const button = event.target || document.getElementById('floatingAjaxSave');
+        const originalText = button ? button.innerHTML : '💾';
         
         // Show loading state
-        button.innerHTML = '⏳ Zapisywanie...';
-        button.disabled = true;
+        if (button) {
+            button.innerHTML = '⏳';
+            button.disabled = true;
+        }
         
         // Send AJAX request
         fetch(form.action, {
@@ -547,19 +577,21 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
             if (response.redirected) {
                 // If server tries to redirect, it means success but we don't want to follow
-                button.innerHTML = '✅ Zapisano!';
-                button.classList.remove('btn-success');
-                button.classList.add('btn-outline-success');
+                if (button) {
+                    button.innerHTML = '✅';
+                    button.style.backgroundColor = '#28a745';
+                }
                 
                 // Show success message
                 showSaveMessage('Post został zapisany pomyślnie!', 'success');
                 
                 // Reset button after 3 seconds
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.classList.remove('btn-outline-success');
-                    button.classList.add('btn-success');
-                    button.disabled = false;
+                    if (button) {
+                        button.innerHTML = originalText;
+                        button.style.backgroundColor = '#007bff';
+                        button.disabled = false;
+                    }
                 }, 3000);
             } else {
                 return response.text();
@@ -579,16 +611,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     showSaveMessage(errorText, 'danger');
                 } else {
-                    button.innerHTML = '✅ Zapisano!';
-                    button.classList.remove('btn-success');
-                    button.classList.add('btn-outline-success');
+                    if (button) {
+                        button.innerHTML = '✅';
+                        button.style.backgroundColor = '#28a745';
+                    }
                     showSaveMessage('Post został zapisany pomyślnie!', 'success');
                     
                     setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.classList.remove('btn-outline-success');
-                        button.classList.add('btn-success');
-                        button.disabled = false;
+                        if (button) {
+                            button.innerHTML = originalText;
+                            button.style.backgroundColor = '#007bff';
+                            button.disabled = false;
+                        }
                     }, 3000);
                 }
             }
@@ -598,8 +632,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showSaveMessage('Błąd zapisu: ' + error.message, 'danger');
         })
         .finally(() => {
-            if (button.disabled) {
+            if (button && button.disabled) {
                 button.innerHTML = originalText;
+                button.style.backgroundColor = '#007bff';
                 button.disabled = false;
             }
         });
@@ -640,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function() {
         summaryButton.title = 'Automatycznie generuje listę wszystkich rysunków na końcu posta';
         summaryButton.addEventListener('click', generateFiguresSummary);
         
-                 // Find the submit button and add our buttons next to it
+                 // Find the submit button and add our button next to it
          const submitButton = document.querySelector('input[type="submit"]');
          if (submitButton) {
              const buttonContainer = document.createElement('div');
@@ -650,15 +685,6 @@ document.addEventListener('DOMContentLoaded', function() {
              submitButton.parentNode.insertBefore(buttonContainer, submitButton);
              buttonContainer.appendChild(submitButton);
              buttonContainer.appendChild(summaryButton);
-             
-             // Add AJAX save button
-             const ajaxSaveButton = document.createElement('button');
-             ajaxSaveButton.type = 'button';
-             ajaxSaveButton.className = 'btn btn-success btn-sm';
-             ajaxSaveButton.innerHTML = '💾 Zapisz bez przekierowania';
-             ajaxSaveButton.title = 'Zapisuje post bez odświeżania strony';
-             ajaxSaveButton.addEventListener('click', savePostAjax);
-             buttonContainer.appendChild(ajaxSaveButton);
          }
     }
     
