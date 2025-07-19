@@ -40,8 +40,9 @@ def art():
 
 @bp.route('/dash')
 def dash():
-    if os.path.isfile(current_app.config['IBM_BACKENDS_PICKLE']):
-        f = open(current_app.config['IBM_BACKENDS_PICKLE'], 'rb')
+    ibm_pickle_path = current_app.config.get('IBM_BACKENDS_PICKLE')
+    if ibm_pickle_path and os.path.isfile(ibm_pickle_path):
+        f = open(ibm_pickle_path, 'rb')
         dr = pickle.load(f)
     else:
         dr = {'tms': None, 'backends': []}
